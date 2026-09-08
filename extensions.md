@@ -1,10 +1,10 @@
-# Focused extension: autonomous value of context-specific knowledge
+# Extension: autonomous value of context-specific knowledge
 
-This is a modest original extension of the May 5, 2026 manuscript. It changes
-only the production payoff restriction \(\Delta_I=0\); it does not re-solve
-the paper's dynamic or welfare propositions.
+This document develops one modest extension of the May 5, 2026 manuscript.
+It changes a maintained production assumption and does not re-solve the
+paper's dynamic or welfare propositions.
 
-## Assumption changed
+## Baseline assumption
 
 > **PAPER**
 
@@ -14,56 +14,39 @@ Assumption 1 imposes
 \Delta_I=0,\qquad \Delta_G>0,\qquad \Delta_X>0.
 \]
 
-Thus a correct idiosyncratic prediction has no stand-alone value when the
-common prediction is wrong.
+Thus, getting the idiosyncratic prediction right has no stand-alone production
+value when the common prediction is wrong.
 
-> **DERIVATION - EXTENSION**
+## Modified utility
 
-Retain \(\Delta_X>0\), but allow
+> **OWN EXTENSION**
 
-\[
-\Delta_I>0.
-\]
-
-Context-specific correctness now has an autonomous payoff.
-
-## Original and modified utility
-
-Before imposing Assumption 1, the production decomposition is
+Retain \(\Delta_X>0\), but allow \(\Delta_I>0\). Before Assumption 1, expected
+production admits the decomposition
 
 \[
-\begin{aligned}
 \mathbb E[f]
-={}&f(0,0)+G(X)\Delta_G+G(Y)\Delta_I\\
-&+G(X)G(Y)\Delta_X.
-\end{aligned}
+=f(0,0)+G(X)\Delta_G+G(Y)\Delta_I+G(X)G(Y)\Delta_X.
 \]
 
-The baseline equation sets \(\Delta_I=0\):
+The modified objective is therefore
 
 \[
-U_0=f(0,0)+G(X)\Delta_G+G(X)G(Y)\Delta_X-c(e).
-\]
-
-The modified equation retains the general term:
-
-\[
-U_\Delta
+U_\Delta(e;X,\tau_A)
 =f(0,0)+G(X)\Delta_G+G(Y)\Delta_I
 +G(X)G(Y)\Delta_X-c(e),
 \]
 
-where
+with
 
 \[
-Y=\sigma^{-2}+\lambda_Ie+\tau_A,\qquad
+Y=\sigma^{-2}+\lambda_Ie+\tau_A,
+\qquad
 c(e)=\frac{\varepsilon}{\varepsilon+1}
 e^{(\varepsilon+1)/\varepsilon}.
 \]
 
-## New first-order condition and cross-partials
-
-The marginal payoff is
+## Modified first-order condition
 
 \[
 U_e
@@ -76,94 +59,100 @@ An interior optimum satisfies
 \lambda_Ig(Y)[\Delta_I+G(X)\Delta_X]=e^{1/\varepsilon}.
 \]
 
-The cross-partials are
+## Comparative statics
+
+For \(X>0\),
 
 \[
-U_{eX}=\lambda_I\Delta_Xg(X)g(Y)>0
-\quad (X>0),
+U_{eX}=\lambda_I\Delta_Xg(X)g(Y)>0.
 \]
+
+Public precision continues to complement effort. For \(X\geq0\),
 
 \[
 U_{e\tau_A}
-=\lambda_Ig'(Y)[\Delta_I+G(X)\Delta_X]<0
-\quad (X\geq0).
+=\lambda_Ig'(Y)[\Delta_I+G(X)\Delta_X]<0.
 \]
 
-Hence public precision still complements effort on the classical interior, and
-AI precision still substitutes for effort. Unlike the baseline model, the
-substitution is strict at \(X=0\).
+AI precision continues to substitute for effort. The substitution is now
+strict at \(X=0\) because \(\Delta_I>0\) preserves a private return to
+idiosyncratic learning.
 
-## Behavior at \(X=0\)
+## Boundary result
 
-At the boundary,
+At \(X=0\),
 
 \[
 U_e
-=\lambda_I\Delta_Ig(\sigma^{-2}+\lambda_Ie+\tau_A)
--e^{1/\varepsilon}.
+=\lambda_I\Delta_I
+g(\sigma^{-2}+\lambda_Ie+\tau_A)-e^{1/\varepsilon}.
 \]
 
-Under \(\sigma^2\in(0,\infty)\), \(\lambda_I>0\), \(\Delta_I>0\),
-\(\varepsilon>0\), and finite \(\tau_A\geq0\), the derivative at \(e=0\) is
-strictly positive and finite. As \(e\to\infty\), it tends to
-\(-\infty\). Moreover, for \(e>0\),
+For a proper finite-variance prior and finite \(\tau_A\), the first term is
+positive and finite at \(e=0\). The marginal payoff tends to \(-\infty\) as
+\(e\to\infty\). Moreover,
 
 \[
 U_{ee}
 =\lambda_I^2g'(Y)[\Delta_I+G(X)\Delta_X]
--\frac1\varepsilon e^{1/\varepsilon-1}<0.
+-\frac1\varepsilon e^{1/\varepsilon-1}<0
+\quad (e>0).
 \]
 
-Thus the objective is strictly concave and has one finite, strictly positive
-optimum \(e_\Delta(0,\tau_A)\).
+Strict concavity and the endpoint signs give a unique positive optimum at the
+boundary.
 
-Keeping the paper's public-precision transition and its
-\(\lambda_G>0\), \(I>0\), and \(\Sigma^2>0\) primitives,
+## Proposed extension result
+
+> **PROPOSITION - OWN EXTENSION**
+
+Suppose \(\Delta_I>0\), \(\Delta_X>0\), \(\lambda_I>0\),
+\(\varepsilon>0\), finite \(\tau_A\), and a proper finite-variance prior.
+Maintain \(\lambda_G>0\), \(I>0\), and \(\Sigma^2>0\). Then the best response
+at \(X=0\) is uniquely positive and the induced public-precision transition
+satisfies
 
 \[
 F_\Delta(0)
 =\left[
-\Sigma^2+\bigl(\lambda_GI e_\Delta(0,\tau_A)\bigr)^{-1}
+\Sigma^2+
+\bigl(\lambda_GI e_\Delta(0,\tau_A)\bigr)^{-1}
 \right]^{-1}>0.
 \]
 
-Therefore \(X=0\) is not a fixed point in this extension.
+Hence \(X=0\) is not a steady state.
 
-## Result demonstrated
+### Proof sketch
 
-> **DERIVATION**
+At \(e=0\), marginal utility equals
+\(\lambda_I\Delta_Ig(\sigma^{-2}+\tau_A)>0\). It becomes negative for large
+effort. Strict concavity makes the crossing unique, so
+\(e_\Delta(0,\tau_A)>0\). Positive effort generates a public signal with
+positive precision. Substitution into the paper's transition equation yields
+\(F_\Delta(0)>0\).
 
-Giving context-specific knowledge autonomous value changes the boundary:
-agents exert positive effort even with no inherited public precision, and that
-effort produces positive next-period public precision. The exact
-zero-knowledge fixed point of the baseline model is eliminated.
+## What is established
 
-> **INTERPRETATION**
+- Context-specific knowledge has a private return at \(X=0\).
+- Boundary effort is uniquely positive.
+- Zero public precision maps to positive next-period precision.
+- The exact zero-knowledge fixed point disappears.
 
-The complete-collapse state may become a strictly positive low-knowledge
-state. This extension removes exact zero as a fixed point; it does not prove
-that all low-knowledge traps, multiplicity, or collapse-like comparative
-statics disappear.
+## What remains open
 
-## Results that remain open
+- The number and stability of positive steady states.
+- Whether a positive low-knowledge state replaces zero.
+- Basins of attraction and global dynamics.
+- Welfare and policy effects.
 
-> **OPEN QUESTION**
+These questions require a new dynamic analysis. The proposition does not claim
+that every low-knowledge outcome disappears.
 
-- Existence, number, location, and stability of positive steady states.
-- Whether a distinct low-knowledge fixed point replaces zero.
-- Basin boundaries and global dynamics.
-- The modified analogues of Propositions 3--13.
-- Welfare and policy effects under \(\Delta_I>0\).
+## Relation to Section 5
 
-These require a new dynamic analysis and are not inferred here.
+> **PAPER / NOVELTY CHECK**
 
-## Section 5 novelty check
-
-> **PAPER / AUDIT**
-
-- Section 5.1 lets AI improve aggregation through \(I(\tau_A)\).
-- Section 5.2 adds synthetic information about the common state.
-- Section 5.3 changes public-knowledge production to depend on \(e^\beta\).
-
-None changes the production payoff restriction \(\Delta_I=0\). The extension
-above is therefore not one of the paper's Section 5 exercises.
+Section 5.1 changes knowledge aggregation through \(I(\tau_A)\). Section 5.2
+adds synthetic information about the common state. Section 5.3 changes public
+knowledge production to depend on \(e^\beta\). None relaxes
+\(\Delta_I=0\), so the result above is not one of the paper's extensions.
