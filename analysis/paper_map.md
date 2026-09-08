@@ -484,7 +484,11 @@ U_{eX}=\lambda_I\Delta_Xg(X)g(Y)>0,
 U_{e\tau_A}=\lambda_Ig'(Y)[\Delta_I+\Delta_XG(X)]<0.
 \]
 
-However, `Delta_I=0` is crucial dynamically. With `Delta_I>0`, private learning can pay at `X=0`, so `e(0,tau_A)` may be positive and `F(0)=0` may disappear. This is why relaxing `Delta_I=0` attacks the collapse state, Lemma 2, and Proposition 5 rather than merely changing the displayed cross-partials.
+However, `Delta_I=0` is crucial dynamically. The focused extension in
+`extensions.md` proves that, under the maintained finite-variance and positive
+technology primitives, `Delta_I>0` implies `e(0,tau_A)>0` and `F(0)>0`.
+Thus exact zero is no longer a fixed point. The location and stability of any
+positive low-knowledge state remain open.
 
 `Delta_X>0` is the condition that makes public knowledge a strict complement. If `Delta_X=0`, `X` does not change the marginal return to effort. Under the baseline `Delta_I=0`, it would also eliminate all private benefit from effort.
 
@@ -675,19 +679,26 @@ The relevant appendices provide proofs for Propositions 14-16 and rework the dyn
 
 > **OPEN QUESTION**
 
-1. **Observation 1 at the boundary:** should its strict derivative display be stated explicitly for `X>0`, matching Observation 2 and footnote 6?
+1. **Observation 1 at the boundary - resolved for this audit:** the strict
+   cross-partial display is an interior statement. At `X=0`,
+   `U_{e tau_A}=0` and `U_{eX}` is not a finite classical derivative.
+   See `analysis/static_audit.md`.
 2. **Knife edge `epsilon=4`:** which parameter coefficients determine local stability when the two asymptotic orders coincide?
-3. **Relaxing `Delta_I=0`:** how exactly do the low steady state and collapse threshold change once `e(0,tau_A)>0`?
+3. **Relaxing `Delta_I=0` - boundary resolved, dynamics open:** the extension
+   proves `e(0,tau_A)>0` and `F(0)>0`, so exact zero is not a fixed point.
+   The number and stability of positive steady states remain open.
 4. **Section 5.1 notation:** the text calls `I_0` the pre-AI baseline, while the displayed formula implies `I(0)=I_0+1`. Is `I_0` meant as an additive baseline component rather than the total no-AI capacity?
 5. **Version dependence:** all use of `epsilon`, the threshold `epsilon=4`, and Section 5's `epsilon<4/beta` must be tied to the May manuscript. The February NBER PDF uses the equivalent `alpha` parameterization.
 6. **Scope of welfare:** statements about non-monotonicity refer to long-run high-steady-state welfare under Assumption 2, with additional basin considerations when `epsilon>4`; they are not claims that more accurate information lowers an agent's static optimized utility.
 
-## 14. Possible handwritten checks
+## 14. Selected handwritten check
 
-> **OPEN QUESTION - no final selection yet**
+> **DERIVATION PLAN**
 
-1. **Observation 1 and the boundary.** Derive `g'(tau)`, both cross-partials, and show exactly why the strict derivative statements require `X>0` while the corner solution remains well defined.
-2. **Static optimum.** Check the FOC, strict concavity, endpoint signs, KKT condition, unique interior optimum for `X>0`, and unique corner at `X=0`.
-3. **The `epsilon=4` threshold.** Derive `G(X)~sqrt(2/pi)sqrt(X)`, `e(X)=Theta(X^(epsilon/2))`, and `e_maint(X)=Theta(X^2)`, then compare exponents.
+The selected check is **Observation 1, cross-partials and the boundary
+\(X=0\)**. It has precedence because the assignment prioritizes the static
+problem and Observation 1, while the dynamic proofs are read-only.
 
-Candidate 3 currently appears most useful because it verifies a nontrivial bridge from the static FOC to the read-only dynamics. Candidate 1 is the best audit of the wording of Observation 1. No physical derivation or final choice is made in Phase 1.
+The exact two-page sequence is in `hand/DERIVATION_GUIDE.md`. The future
+photograph must be named `hand/observation1-boundary.jpg`; its status is
+`PENDING STUDENT PHOTO`. No physical derivation or photograph exists yet.

@@ -1,9 +1,18 @@
-# Handwritten check - candidates only
+# Handwritten verification
 
-No handwritten deliverable has been selected or fabricated in Phase 1. The current candidates are:
+## Selected check
 
-1. Derive both cross-partials in Observation 1, including the formula for `g'(tau)` and the failure of the strict derivative statements at `X = 0`.
-2. Verify the unique interior solution of the static effort problem from the first-order condition and contrast it with the corner `e = 0` at `X = 0`.
-3. Derive the near-zero orders `e(X,tau_A) = Theta(X^(epsilon/2))` and maintenance effort `Theta(X^2)`, which produce the threshold `epsilon = 4`.
+The future photograph will verify **Observation 1, its two cross-partials, and
+the boundary \(X=0\)**. It should show the derivatives of \(G\), \(g\), the
+effort first-order derivative, the interior signs, and the separate boundary
+evaluation.
 
-Candidate 3 currently appears most informative because it connects the static incentive calculation to the collapse mechanism, but no final choice has been made.
+Follow **hand/DERIVATION_GUIDE.md** and keep the derivation to a suggested
+maximum of two handwritten pages.
+
+## Expected file
+
+- Name: **hand/observation1-boundary.jpg**
+- Status: **PENDING STUDENT PHOTO**
+
+No photograph has been created or represented as completed.

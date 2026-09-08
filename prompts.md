@@ -669,3 +669,429 @@ Si vuelves a quedar bloqueado, no rellenes secciones vacías innecesarias. Repor
 7. cómo continuarás automáticamente después de resolverla
 ```
 `````
+
+## User - Phase 2 focused audit
+
+`````text
+Continúa Repository 4 desde el estado completado de la Fase 1.
+
+Queda aproximadamente 38% del límite de uso de esta sesión. Esta fase debe ser deliberadamente acotada y debe poder completarse con ese margen.
+
+No intentes terminar el proyecto.
+
+Objetivo de la Fase 2
+
+Concentrarte exclusivamente en tres resultados:
+
+1. auditar con precisión Observation 1, especialmente su comportamiento en (X=0)
+2. desarrollar la extensión más directa que relaja (\Delta\_I=0)
+3. preparar una guía exacta para que yo haga la verificación manuscrita
+
+No redactes todavía el README final.
+
+No prepares todavía el Beamer.
+
+No compiles una presentación.
+
+No abras el PR.
+
+No fusiones a `main`.
+
+No comentes en el issue.
+
+Estado previo que debes verificar brevemente
+
+Trabaja en:
+
+`C:\Users\marce\Documents\GitHub\ai-04-acemoglu`
+
+Confirma únicamente:
+
+- rama activa `analysis`
+- working tree limpio
+- `analysis` sincronizada con `origin/analysis`
+- commit previo `eaf373372219e2d723fbd55164b402f7d81820f8`
+- disponibilidad del PDF MIT ya descargado
+- existencia de `analysis/paper_map.md`
+
+No repitas el preflight.
+
+No vuelvas a revisar autenticación, herramientas, WSL, template o repositorios anteriores.
+
+No vuelvas a leer las 69 páginas desde cero. Usa el PDF local, `analysis/paper_map.md` y consulta solo las páginas o apéndices necesarios para verificar los puntos de esta fase.
+
+Fuente primaria
+
+Utiliza exclusivamente como fuente primaria:
+
+`paper/07-acemoglu-kong-ozdaglar-2026-knowledge-collapse.pdf`
+
+SHA-256 esperado:
+
+`63E37F2AF463422E587C9BD81CDA3BB555404A6AD65763ACA0F9BEBB8E2D4EC6`
+
+Mantén el PDF ignorado por Git.
+
+Parte A. Auditoría focalizada de Observation 1
+
+Reconstruye de forma independiente y paso a paso:
+
+[
+G(\tau)=2\Phi(\sqrt{\tau})-1,
+\qquad
+g(\tau)=G'(\tau)
+\=\frac{\phi(\sqrt{\tau})}{\sqrt{\tau}}.
+]
+
+Verifica algebraicamente:
+
+[
+g'(\tau)
+========
+
+-\frac{1}{2}\left(1+\frac{1}{\tau}\right)g(\tau),
+\qquad \tau>0.
+]
+
+Después parte de la utilidad esperada del modelo base:
+
+[
+U(e;X,\tau\_A)
+==============
+
+f(0,0)
++G(X)\Delta\_G
++G(X)G(Y)\Delta\_X
+-\frac{\varepsilon}{\varepsilon+1}
+e^{(\varepsilon+1)/\varepsilon},
+]
+
+donde
+
+[
+Y=\sigma^{-2}+\lambda\_I e+\tau\_A.
+]
+
+Deriva explícitamente:
+
+[
+U\_e,
+\qquad
+U\_{eX},
+\qquad
+U\_{e\tau\_A}.
+]
+
+No te limites a presentar las fórmulas. Explica cada aplicación de la regla de la cadena.
+
+Determina con precisión:
+
+- el dominio en el que cada derivada existe
+- las condiciones necesarias para cada signo
+- cuándo el signo es estricto
+- qué ocurre si (X>0)
+- qué ocurre exactamente si (X=0)
+- por qué (g(0)) no es finito
+- por qué (G(0)=0)
+- por qué el problema de optimización en (X=0) sigue estando bien definido
+- por qué el óptimo es (e=0) en la frontera del modelo base
+- por qué (U\_{e\tau\_A}=0) en (X=0), en lugar de ser estrictamente negativo
+
+Distingue entre dos conceptos:
+
+1. demostrar complementariedad o sustitución mediante cross-partials interiores
+2. demostrar increasing o decreasing differences mediante comparaciones discretas
+
+Verifica si la interpretación económica de Observation 1 puede mantenerse globalmente en sentido débil, aunque sus cross-partials estrictos requieran un dominio interior.
+
+No declares que el paper está equivocado salvo que el enunciado contradiga de manera inequívoca su dominio formal.
+
+La conclusión debe clasificar el hallazgo como una de estas opciones:
+
+- resultado correcto sin calificaciones
+- resultado correcto con una calificación de dominio
+- error formal demostrado
+- ambigüedad no resuelta
+
+Justifica la clasificación.
+
+Parte B. Extensión focalizada: relajar (\Delta\_I=0)
+
+La sección 5 no relaja Assumption 1. Analiza una extensión propia y claramente etiquetada en la que:
+
+[
+\Delta\_I>0,
+\qquad
+\Delta\_X>0.
+]
+
+Empieza desde la descomposición general de producción antes de imponer Assumption 1.
+
+Verifica que la utilidad esperada se convierte en:
+
+[
+U(e;X,\tau\_A)
+==============
+
+f(0,0)
++G(X)\Delta\_G
++G(Y)\Delta\_I
++G(X)G(Y)\Delta\_X
+-c(e).
+]
+
+Deriva:
+
+[
+U\_e
+====
+
+\lambda\_I g(Y)
+\left[\Delta\_I+G(X)\Delta\_X\right]
+-e^{1/\varepsilon}.
+]
+
+Luego deriva y analiza:
+
+[
+U\_{eX},
+\qquad
+U\_{e\tau\_A}.
+]
+
+Responde rigurosamente:
+
+- ¿Sigue complementando (X) al esfuerzo?
+- ¿Sigue sustituyendo (\tau\_A) al esfuerzo?
+- ¿Qué cambia en (X=0)?
+- ¿Existe un esfuerzo estrictamente positivo en (X=0)?
+- ¿Qué condiciones garantizan existencia y unicidad de ese esfuerzo?
+- ¿Qué implica esto para (F(0))?
+- ¿Puede (X=0) seguir siendo un fixed point?
+- ¿Desaparece el colapso completo o solo se transforma en un estado de bajo conocimiento?
+- ¿Qué parte del resultado es demostrada y qué parte requeriría estudiar nuevamente toda la dinámica?
+
+La extensión debe ser modesta.
+
+No intentes resolver todos los steady states.
+
+No derives nuevamente las Propositions 3 a 13.
+
+No hagas afirmaciones de bienestar que todavía no se sigan de la extensión.
+
+El objetivo es demostrar, si corresponde, que permitir valor autónomo del conocimiento particular cambia la frontera (X=0) y elimina el fixed point de colapso completo, sin afirmar que elimina todo riesgo de bajo conocimiento.
+
+Antes de llamar a esto una extensión propia, vuelve a comprobar de forma focalizada que:
+
+- Section 5.1 cambia agregación
+- Section 5.2 añade datos sintéticos
+- Section 5.3 cambia la producción de conocimiento público mediante (e^\beta)
+- ninguna de ellas cambia (\Delta\_I=0)
+
+Parte C. Derivación manuscrita
+
+Selecciona como derivación manuscrita principal:
+
+“Observation 1, cross-partials and the boundary (X=0)”.
+
+Esta opción tiene precedencia sobre la derivación del umbral (\varepsilon=4), porque el issue prioriza el problema estático y Observation 1. Las demostraciones dinámicas fueron clasificadas como read-only.
+
+Crea:
+
+`hand/DERIVATION_GUIDE.md`
+
+La guía debe estar en inglés y debe indicar exactamente qué debo escribir a mano, en un máximo sugerido de dos páginas.
+
+Debe incluir esta secuencia:
+
+1. definición de (G(\tau))
+2. derivación de (g(\tau)=G'(\tau))
+3. derivación de (g'(\tau))
+4. definición de (Y)
+5. utilidad esperada
+6. derivación de (U\_e)
+7. derivación de (U\_{eX})
+8. derivación de (U\_{e\tau\_A})
+9. signos para (X>0)
+10. evaluación separada de (X=0)
+11. veredicto final en una o dos líneas
+
+Incluye una propuesta breve de veredicto manuscrito, por ejemplo:
+
+“Observation 1 is correct on the interior (X>0). At (X=0), AI precision is only a weak substitute because (U\_{e\tau\_A}=0), while (U\_{eX}) is not a finite classical cross-partial. The economic mechanism survives, but the strict derivative statement needs an interior-domain qualification.”
+
+No fabriques la fotografía.
+
+No conviertas la guía en una imagen.
+
+No afirmes que la derivación manuscrita ya existe.
+
+El nombre esperado para la futura fotografía será:
+
+`hand/observation1-boundary.jpg`
+
+Actualiza `hand/README.md` para registrar:
+
+- qué verificará la fotografía
+- nombre esperado
+- estado `PENDING STUDENT PHOTO`
+
+Archivos autorizados
+
+Crea:
+
+- `analysis/static_audit.md`
+- `hand/DERIVATION_GUIDE.md`
+
+Actualiza únicamente si corresponde:
+
+- `analysis/paper_map.md`
+- `extensions.md`
+- `hand/README.md`
+- `prompts.md`
+
+No modifiques todavía:
+
+- `README.md`
+- `presentation.tex`
+- `presentation.pdf`
+- `paper/README.md`
+- `AGENTS.md`
+- `.gitignore`
+
+Contenido de `analysis/static_audit.md`
+
+Debe estar en inglés y utilizar estas etiquetas:
+
+- `PAPER`
+- `DERIVATION`
+- `INTERPRETATION`
+- `BOUNDARY CHECK`
+- `VERDICT`
+
+Debe contener:
+
+1. source location
+2. baseline utility
+3. derivative of (g)
+4. cross-partials
+5. interior conditions
+6. boundary (X=0)
+7. increasing-differences interpretation
+8. final verdict on Observation 1
+9. concise comparison with the (\Delta\_I>0) extension
+
+Contenido de `extensions.md`
+
+Desarrolla solamente la extensión (\Delta\_I>0).
+
+Incluye:
+
+- qué supuesto cambia
+- ecuación original
+- ecuación modificada
+- nueva FOC
+- comportamiento en (X=0)
+- resultado demostrado
+- resultados que permanecen abiertos
+- revisión de que no aparece en Section 5
+
+No agregues otras extensiones.
+
+Integridad de `prompts.md`
+
+El archivo actualmente contiene los dos prompts anteriores sin respuestas inventadas.
+
+Si la respuesta completa y exacta de la Fase 1 está disponible en el historial de esta misma sesión, agrégala literalmente a `prompts.md`.
+
+Después registra literalmente este prompt como:
+
+`User - Phase 2 focused audit`
+
+No reconstruyas ni resumas la respuesta anterior.
+
+Si no puedes recuperar el texto exacto de la respuesta de Fase 1, no inventes nada. Deja `prompts.md` sin esa respuesta y repórtalo como pendiente para que yo la proporcione después.
+
+No intentes registrar tu futura respuesta de esta fase antes de haberla emitido. La incorporaremos usando el output real en la siguiente sesión.
+
+Verificaciones
+
+Antes de cerrar:
+
+- revisa las ecuaciones contra el PDF local
+- ejecuta `git diff --check`
+- busca errores de LaTeX dentro de los archivos Markdown
+- confirma que no se modificaron archivos fuera del alcance
+- confirma que el PDF continúa ignorado
+- confirma que no existen credenciales o códigos de autenticación
+- revisa el diff completo
+- crea un commit descriptivo en `analysis`
+- haz push a `origin/analysis`
+- confirma que local y remoto coinciden
+
+No instales SymPy.
+
+No generes simulaciones.
+
+No repitas auditorías de entorno.
+
+No abras PR.
+
+No hagas merge.
+
+No publiques el enlace en el issue.
+
+No redactes entregables finales.
+
+Formato del reporte
+
+Mantén el reporte corto para conservar el límite de la sesión.
+
+Responde únicamente con:
+
+1. Estado
+
+   - `COMPLETED` o `BLOCKED`
+
+2. Veredicto sobre Observation 1
+
+   - máximo 250 palabras
+
+3. Resultado de la extensión (\Delta\_I>0)
+
+   - máximo 250 palabras
+
+4. Derivación manuscrita
+
+   - archivo creado
+   - nombre esperado de la foto
+   - qué debo escribir y verificar
+
+5. Archivos modificados
+
+   - lista breve
+
+6. Verificaciones Git
+
+   - diff
+   - commit
+   - push
+   - estado final
+
+7. Pendientes para después del restablecimiento
+
+   - README final
+   - Beamer
+   - integración de la fotografía
+   - compilación y revisión visual
+   - PR
+   - merge
+   - comentario en el issue
+
+8. Siguiente acción recomendada
+
+   - indicar que debo hacer la derivación siguiendo `hand/DERIVATION_GUIDE.md`
+   - no ejecutar ninguna fase adicional
+
+Prioriza exactitud matemática y cierre limpio de esta fase sobre longitud del reporte.
+`````
