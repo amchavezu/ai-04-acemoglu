@@ -1,53 +1,23 @@
-# Extensions — what could be relaxed, and what is already taken
+# Extension questions - Phase 1 only
 
-The paper names its own assumptions in a block just before §1.2, and lists
-exactly three: **substitutability/additivity**, **linear cost**, and **myopic
-users**. That block is the natural starting point, but it needs checking against
-the appendices before anything is claimed to be open.
+This is not a final extension proposal. It records questions that remain open after auditing Section 5 and the relevant appendices.
 
-## Dead end: linear → convex cost
+## Already developed by the paper - do not present as new
 
-This is the first thing anyone suggests, including every LLM I asked. It is
-**already done**. Appendix D is titled *"Extension to convex cost functions
-(Remark 2.3)"* and redoes Sections 2, 3 and 4 under strictly convex $c(e)$, with
-Propositions D.3 and D.6.
+- Agentic AI that also improves aggregation of general knowledge: Section 5.1, with `I(tau_A) = I_0 + exp(eta tau_A)`.
+- AI-generated synthetic information about the common state: Section 5.2, with precision `tau_syn`.
+- Partial separation between effort that learns the individual state and effort that produces general knowledge: Section 5.3, with public precision proportional to `e^beta`.
+- Gaussian information design through a time-varying precision cap: Section 4.5.
 
-Proposing it as an extension is replication, and it is the clearest example in
-this course of why the appendices have to be read before an idea is called new.
+## Live questions
 
-**But there is a gap inside the gap.** Appendix D covers §§2–4. It does **not**
-cover §5. Convex cost applied to the skill-polarisation result is technically
-untouched — a narrow opening, but a real one.
+- **`Delta_I > 0`:** What survives if context-specific knowledge has value even when the common prediction is wrong? The static substitution result may survive, but `e(0,tau_A)` need not be zero, so the zero-knowledge fixed point, Lemma 2, and Proposition 5 must be rebuilt. The course README explicitly identifies this as a promising relaxation.
+- **Long-lived or forward-looking agents:** What changes if agents internalize some effect of their effort on future public knowledge? This alters the maintained short-lived-agent assumption and partially internalizes the externality.
+- **Non-atomistic contributors or private rewards for public knowledge:** How much internalization is sufficient to prevent the collapse fixed point without removing AI's static substitution channel?
+- **Signals that are correlated or misspecified:** Precision additivity and posterior-mean optimality rely on the independent, correctly specified Gaussian structure. Which comparative statics survive correlation?
 
-## Live: myopia
+## Questions to settle before choosing
 
-The agent maximises **short-term** utility at each state: he chooses effort to
-maximise current output net of cost, ignoring that effort today changes skill
-tomorrow. The paper is explicit that this is a maintained assumption, and it is
-never relaxed anywhere — no discount factor, no forward-looking agent, nothing.
-
-A **two-period agent** who internalises the skill transition is the most tractable
-version: solve period 2 as the static problem already characterised, then period 1
-with the continuation value attached. The question worth asking is whether the
-deskilling result survives when the agent can see it coming.
-
-## Harder: complementarity inside $p(\cdot)$
-
-The obvious move — add an interaction term between $s$ and $a$ — is partly
-pre-empted: §4.4 micro-founds AI unreliability as a negative interaction and §5.3
-micro-founds AI literacy as a positive one. So an extension has to change the
-**production primitive itself**, not bolt a term onto it. Harder to make
-tractable, and easier to end up with a model whose results are assumed rather
-than derived.
-
-## How to tell a real extension from a fake one
-
-Three questions, in order:
-
-1. **Is it in the appendices?** Check before anything else. This is where most
-   proposed extensions die.
-2. **Does one equation change, or all of them?** If relaxing the assumption
-   rewrites the whole model, it is a new paper, not an extension.
-3. **Can you say what you expect to happen?** If you cannot state the expected
-   direction of the result beforehand, you do not yet understand the mechanism
-   well enough to relax it.
+- Does allowing `Delta_I > 0` preserve strict AI-effort substitution at every positive `X`, and what replaces the behavior at `X = 0`?
+- Which of the long-lived-agent and non-atomistic variants changes only one equation rather than the entire equilibrium concept?
+- Is the wording that `I_0` is the pre-AI baseline in Section 5.1 consistent with `I(0) = I_0 + 1`, or is `I_0` intended only as an additive baseline component?

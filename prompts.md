@@ -1,409 +1,671 @@
-# Conversation export
+# Raw prompts - Phase 1
 
-Project: Aouad--Lykouris--Zhong  
-Exported: 2026-08-22
+No assistant response is inserted here. The actual Phase 1 response can be appended later from the delivered output.
 
-## User
+## Initial kickoff prompt - verbatim
 
-Hola en esta carpeta hay un paper. Soy profesor graduado en caltech y tengo que ensenar a mis alumnos este paper con todos los detalles matematicos, podriamos obviar la seccion de extensiones. Por favor puedes armar un material de latex como tutorial para entender todos los pasos que debo saber pero literal sin saltarse nada luego de crear el material de latex tienes que compilarlo usando tectonic que ya tengo instalado en esta computadora. el paper es 2605.11350v1.pdf
+`````text
+Vamos a iniciar Repository 4 del curso Artificial Intelligence and Economic Modeling.
 
+Quiero trabajar este proyecto por fases. En esta primera fase debes:
 
-## Assistant
+1. verificar brevemente el entorno indispensable
+2. crear correctamente el repositorio y la rama de trabajo
+3. identificar y fijar la versión exacta del paper
+4. reconstruir su lógica económica y matemática
+5. detenerte antes de redactar los entregables finales
 
-Voy a usar las habilidades de PDF y de investigación académica: la primera para extraer y verificar fielmente el paper y el PDF final; la segunda para reconstruir cada argumento, supuesto y derivación con trazabilidad. Excluiré únicamente la sección de extensiones, prepararé el tutorial en español y lo compilaré con `tectonic`, revisando también el renderizado página por página.
+No intentes completar todo el proyecto en esta fase.
 
-## User
+Contexto del proyecto
 
-Hola en esta carpeta hay un paper. Soy profesor graduado en caltech y tengo que ensenar a mis alumnos este paper con todos los detalles matematicos, podriamos obviar la seccion de extensiones. Por favor puedes armar un material de latex como tutorial para entender todos los pasos que debo saber pero literal sin saltarse nada luego de crear el material de latex tienes que compilarlo usando tectonic que ya tengo instalado en esta computadora. el paper es 2605.11350v1.pdf. El tutorial tiene que ser completo en ingles ya que las clases las dicto en ingles
+- Cuenta de GitHub: `amchavezu`
+- Repositorio requerido: `ai-04-acemoglu`
+- Visibilidad: pública
+- Autor: `Alvaro Marcelo Chávez Unyen`
+- Carpeta base: `C:\Users\marce\Documents\GitHub`
+- Deadline: martes 8 de septiembre de 2026 a las 22:00, hora de Lima
+- Issue:
+  [https://github.com/alexanderquispe/AI-Econ-Modeling/issues/3](https://github.com/alexanderquispe/AI-Econ-Modeling/issues/3)
+- Repositorio del curso:
+  [https://github.com/alexanderquispe/AI-Econ-Modeling](https://github.com/alexanderquispe/AI-Econ-Modeling)
+- Template:
+  [https://github.com/alexanderquispe/ai-01-aouad](https://github.com/alexanderquispe/ai-01-aouad)
+- Paper:
+  [https://www.nber.org/papers/w34910](https://www.nber.org/papers/w34910)
+- PDF utilizado por el repositorio del curso:
+  [https://economics.mit.edu/sites/default/files/2026-05/AI%2C%20Human%20Cognition%20and%20Knowledge%20Collapse%2005-05-26.pdf](https://economics.mit.edu/sites/default/files/2026-05/AI%2C%20Human%20Cognition%20and%20Knowledge%20Collapse%2005-05-26.pdf)
 
-## Assistant
+Repositorios anteriores que puedes revisar solo como referencia del flujo de trabajo:
 
-Voy a usar dos habilidades: `pdf` para extraer y verificar cuidadosamente el artículo, y `econ-deep-research` para reconstruir la lógica matemática y mantener trazabilidad entre cada afirmación y el paper. Después prepararé un tutorial autocontenido en inglés, omitiendo la sección de extensiones, lo compilaré con Tectonic y revisaré visualmente el PDF final.
+- [https://github.com/amchavezu/ai-02-agrawal](https://github.com/amchavezu/ai-02-agrawal)
+- [https://github.com/amchavezu/ai-03-quispe](https://github.com/amchavezu/ai-03-quispe)
 
-## Assistant
+No modifiques ningún repositorio anterior. No copies su contenido académico.
 
-Primero estoy reconstruyendo el “mapa del paper”: definiciones, secuencia del modelo, resultados principales y dependencias entre lemas. La parte delicada será expandir pruebas que el artículo comprime en frases como “by standard arguments”; ahí añadiré derivaciones intermedias, chequeos de casos límite y notas pedagógicas explícitas.
+Objetivo de la fase
 
-## Assistant
+Al terminar esta fase quiero tener:
 
-Ya confirmé que “extensions” corresponde al Apéndice D (costos convexos). Mantendré el modelo básico, las tres secciones centrales y los apéndices matemáticos A–C, incluidos los contraejemplos y benchmarks que aclaran los teoremas; excluiré únicamente ese Apéndice D y sus numerics asociados.
+- el repositorio nuevo creado desde el template
+- la rama `analysis` creada y publicada
+- el contenido heredado del paper anterior separado o limpiado
+- la versión exacta del paper identificada
+- un mapa claro del modelo
+- una explicación intuitiva de cada bloque matemático relevante
+- las dudas, condiciones y posibles trampas claramente identificadas
+- un primer commit en `analysis`
+- ninguna entrega final publicada todavía
 
-## Assistant
+1. Preflight breve
 
-El manuscrito ya está estructurado: incluye el benchmark estático, los tres teoremas principales, las pruebas auxiliares de los apéndices A–C, ejercicios con soluciones y una secuencia de cuatro clases. Ahora estoy en la fase de compilación y control de calidad: primero resolveré cualquier error de LaTeX y luego revisaré todas las páginas renderizadas.
+Verifica únicamente lo necesario para trabajar:
 
-## Assistant
+- que `C:\Users\marce\Documents\GitHub` exista
+- que Git funcione
+- que GitHub CLI funcione
+- que `gh auth status` confirme la cuenta `amchavezu`
+- que WSL2 esté disponible
+- que Python, `pdftotext`, `pdfinfo` y LaTeX estén disponibles
+- que no exista la carpeta local `ai-04-acemoglu`
+- que no exista el repositorio remoto `amchavezu/ai-04-acemoglu`
 
-La revisión visual mostró que las 25 páginas se leen bien y no hay fórmulas cortadas ni referencias sin resolver. Encontré dos detalles de composición que sí vale la pena pulir: un diagrama inicial con etiquetas demasiado juntas y la última fila del índice de notación separada por un salto de página. Los estoy corrigiendo antes de la compilación final.
+No reinstales herramientas.
 
-## Assistant
+No vuelvas a autenticar GitHub si la sesión funciona.
 
-Listo. Preparé un tutorial completo en inglés de 25 páginas que incluye:
+Si la cuenta activa no es `amchavezu`, si existe el repositorio o la carpeta objetivo, o si necesitas permisos elevados, detente y consulta. No borres ni sobrescribas nada.
 
-- Todos los modelos, teoremas y derivaciones principales.
-- Pruebas y resultados auxiliares de los Apéndices A–C.
-- Explicaciones pedagógicas, errores frecuentes y plan de cuatro clases.
-- Ejercicios con soluciones.
-- Exclusión explícita del Apéndice D sobre costos convexos.
+2. Revisión de instrucciones
 
-El PDF fue compilado con Tectonic 0.15.0 y revisado visualmente página por página, sin referencias rotas ni fórmulas cortadas: :codex-file-citation{path="/Users/alexanderquispe/Documents/GitHub/Aouad–Lykouris–Zhong/output/pdf/human_ai_productivity_paradoxes_tutorial.pdf" purpose="output"}
+Lee completamente:
 
-También dejé disponibles:
+- el issue 3 y sus comentarios
+- `README.md` del repositorio del curso
+- `syllabus/repository-guide.md`
+- `papers/README.md`
+- `papers/fetch.sh`
+- la estructura del template oficial
 
-- [Fuente LaTeX](/Users/alexanderquispe/Documents/GitHub/Aouad–Lykouris–Zhong/tutorial/tutorial.tex)
-- [Registro de evidencia](/Users/alexanderquispe/Documents/GitHub/Aouad–Lykouris–Zhong/tutorial/evidence-ledger.json)
+Identifica:
 
-## User
+- requisitos obligatorios
+- archivos requeridos
+- estructura exacta del Beamer
+- deadline
+- ciclo branch, PR y merge
+- forma de registrar la entrega
+- contenido adicional que puede mejorar la nota
+- acciones que todavía no deben ejecutarse
 
+Comprueba también si el issue o la guía han cambiado desde la información incluida en este prompt. Las instrucciones actuales del profesor tienen precedencia.
 
-# Files mentioned by the user:
+3. Creación del repositorio
 
-## codex-clipboard-121bd84a-9fda-49d7-ae13-661517fa3e21.png: /var/folders/9r/dv5kdqsn3jj_s4vlrjy493p00000gn/T/codex-clipboard-121bd84a-9fda-49d7-ae13-661517fa3e21.png
+Si todas las verificaciones pasan:
 
-## My request for Codex:
-for this section of the tutorial can you please be more clear why we get the + simbol
+- crea `amchavezu/ai-04-acemoglu` como repositorio público usando el template `alexanderquispe/ai-01-aouad`
+- clónalo en `C:\Users\marce\Documents\GitHub\ai-04-acemoglu`
+- confirma que el commit inicial está en `main`
+- no edites directamente en `main`
+- crea la rama `analysis`
+- configura su upstream en `origin/analysis`
+- realiza todo el trabajo de esta fase en `analysis`
 
+Elimina o reemplaza únicamente en `analysis` el contenido heredado que corresponde al paper de Aouad, Lykouris y Zhong.
 
-## User
+No dejes fotografías, tutoriales, ecuaciones, respuestas o conclusiones del template como si fueran parte de este trabajo.
 
+Mantén por ahora un scaffold limpio. No redactes todavía el README final ni la presentación final.
 
-# Files mentioned by the user:
+4. Versión y fuente del paper
 
-## codex-clipboard-121bd84a-9fda-49d7-ae13-661517fa3e21.png: /var/folders/9r/dv5kdqsn3jj_s4vlrjy493p00000gn/T/codex-clipboard-121bd84a-9fda-49d7-ae13-661517fa3e21.png
-## My request for Codex:
-for this section of the tutorial can you please be more clear why we get the + simbol, i will later share this tutorial to my studnets and they still are not that familiar with some math symbols, also in detail explain why we get that solution for both e and p
+Descarga localmente el PDF indicado por `papers/fetch.sh`. Guárdalo dentro de `paper/` y asegúrate de que Git lo ignore.
 
+Verifica:
 
-## Assistant
+- título
+- autores
+- número del working paper
+- número de páginas
+- fecha o versión
+- tamaño del archivo
+- metadatos del PDF
+- SHA-256
+- URL exacta de descarga
 
-I’ll revise that proposition so it introduces the positive-part symbol in plain language, derives the effort formula case by case, and then derives the productivity formula from the optimal effort rather than presenting either formula as a jump. I’m using the PDF workflow again because this changes the compiled teaching artifact and requires a fresh visual check.
+Descarga temporalmente la versión actual alojada por NBER y compárala con el PDF de MIT.
 
-## Assistant
+No asumas que son el mismo archivo porque ambos tienen 69 páginas.
 
-The key pedagogical change is to introduce one unified object first: the optimal total input is \(x^{\mathrm{opt}}=\max\{x^\star,s+a\}\). From that single statement, effort is simply the extra input the human must supply, and productivity is production evaluated at that total input. This makes both boxed formulas consequences of the same idea.
+Determina cuál debe ser la fuente primaria del proyecto según el repositorio del curso. Registra expresamente qué versión leíste.
 
-## Assistant
+Revisa también esta posible inconsistencia:
 
-The expanded derivation has been inserted. It now explicitly distinguishes the raw expression \(x^\star-s-a\) from feasible effort, explains that the subscript \(+\) truncates negative values at zero, and proves the productivity formula by substituting the optimal total input. Tectonic is recompiling the longer version now.
+El issue indica “Sections 2 and 3.4, the static problem and Observation 1”. Sin embargo, puede que la sección 2 del PDF sea Related Literature y que el problema del agente aparezca en la sección 3.
 
-## Assistant
+Verifica la numeración directamente. No corrijas la consigna silenciosamente.
 
-Updated the tutorial with a much more introductory derivation:
+5. Lectura y reconstrucción del paper
 
-- Defines \(z_+=\max\{z,0\}\) and explains that \(+\) is a subscript, not addition.
-- Introduces \(x^{\mathrm{opt}}=\max\{x^\star,s+a\}\).
-- Derives \(e^\star=(x^\star-s-a)_+\) step by step.
-- Derives both cases of \(p^\star\) by substitution.
-- Adds two numerical examples.
-- Recompiled with Tectonic and visually verified all 27 pages.
+Lee el PDF completo para entender el alcance general.
 
-Updated PDF: :codex-file-citation{path="/Users/alexanderquispe/Documents/GitHub/Aouad–Lykouris–Zhong/output/pdf/human_ai_productivity_paradoxes_tutorial.pdf" purpose="output"}
+Concentra el análisis detallado en:
 
-The editable source is [tutorial.tex](/Users/alexanderquispe/Documents/GitHub/Aouad–Lykouris–Zhong/tutorial/tutorial.tex).
+- construcción del entorno
+- secciones 3.1 a 3.5
+- problema estático del agente
+- Observation 1
+- conexión entre el problema estático y la dinámica
 
-## User
+Lee las secciones dinámicas, de steady states, colapso y bienestar para entender qué afirman, pero no intentes reproducir sus demostraciones. El issue las considera read-only.
 
-for this section  they do not know what are transition rates, they are econ students. can we add some clarification? 
+Lee completamente la sección 5 y revisa los apéndices relevantes para no proponer como nueva una extensión que los autores ya desarrollaron.
 
+6. Reconstrucción conceptual
 
-## Assistant
+Antes de derivar ecuaciones, explica qué situación económica intentan modelar los autores.
 
-Yes. I’ll add a short continuous-time Markov-chain primer exactly where transition rates first appear: rate versus probability, the small-time interpretation, exponential waiting times, upward/downward event probabilities, boundary states, units, and a numerical example. I’ll also add a simple skill-ladder diagram so the notation is visible before detailed balance is introduced.
+Quiero que respondas claramente:
 
-## Assistant
+- ¿Cuál es la pregunta central del paper?
+- ¿Qué significa “knowledge collapse” en este modelo?
+- ¿Cuál es la diferencia entre general knowledge y context-specific knowledge?
+- ¿Por qué ambos tipos de conocimiento son necesarios para producir?
+- ¿Qué representan el estado común y el estado idiosincrático?
+- ¿Por qué el estado común evoluciona como un random walk?
+- ¿Por qué el conocimiento pasado pierde valor si no existe esfuerzo nuevo?
+- ¿Qué produce el esfuerzo humano?
+- ¿Qué información proporciona la IA agéntica?
+- ¿Qué información no proporciona en el modelo base?
+- ¿Por qué el esfuerzo humano tiene un beneficio privado y una externalidad social?
+- ¿Por qué el agente no internaliza su contribución al conocimiento general?
+- ¿Por qué agentes de vida corta son importantes para el mecanismo?
+- ¿Por qué una mejor IA puede elevar la calidad de la decisión actual y perjudicar el conocimiento futuro?
+- ¿Cuál es el feedback loop que puede generar un equilibrio de bajo conocimiento?
+- ¿Qué diferencia existe entre una mejora de IA agéntica y una mejora en la agregación del conocimiento general?
 
-The clarification is now in place. It treats transition rates as economic hazards/intensities, explicitly warns that a rate is not a probability, derives the short-interval probabilities, and explains the competing-clock interpretation before showing the stationary distribution.
+Usa ejemplos concretos del propio paper, como decisiones médicas o de inversión, cuando ayuden a interpretar el modelo.
 
-## Assistant
+7. Reconstrucción matemática con intuición
 
-The first compile surfaced one layout issue: the skill-ladder diagram was wider than the text block. I’m tightening its spacing before the final visual review; the mathematical content compiled correctly.
+Reconstruye paso a paso el bloque estático.
 
-## Assistant
+Para cada ecuación, presenta cuatro elementos:
 
-Updated the tutorial with an economics-oriented explanation of transition rates, including:
+1. qué dice matemáticamente
+2. qué representa económicamente
+3. por qué los autores necesitan esa ecuación
+4. cómo conecta con la siguiente parte del modelo
 
-- Hazard/intensity interpretation and economic analogies.
-- Why a rate is not a probability.
-- The approximation \(\Pr(\text{transition})\approx\text{rate}\times h\).
-- Skill-ladder diagram.
-- Exponential waiting times and competing risks.
-- Boundary-state behavior.
-- Numerical annual/monthly example.
-- Introduction to the generator matrix and \(\pi Q=0\).
+Incluye al menos:
 
-The 28-page tutorial was recompiled with Tectonic and visually verified: :codex-file-citation{path="/Users/alexanderquispe/Documents/GitHub/Aouad–Lykouris–Zhong/output/pdf/human_ai_productivity_paradoxes_tutorial.pdf" purpose="output"}
+- estado común (\theta\_t)
+- estado idiosincrático (\theta\_{i,t})
+- función de producción (f)
+- indicadores de predicción correcta
+- (\Delta\_G), (\Delta\_I) y (\Delta\_X)
+- Assumption 1
+- función de costo del esfuerzo
+- señales privadas, públicas y de IA
+- esfuerzo agregado
+- precisión pública (X\_t)
+- precisión idiosincrática (Y\_{i,t})
+- suma de precisiones bajo señales normales independientes
+- función (G(\tau))
+- derivada (g(\tau)=G'(\tau))
+- utilidad esperada de la ecuación (6)
+- variable elegida por el agente
+- restricción (e\_{i,t}\geq 0)
+- términos que el agente toma como dados
+- condición de primer orden
+- condiciones para que la FOC caracterice un máximo único
+- comportamiento en la esquina (X\_t=0)
 
-Editable source: [tutorial.tex](/Users/alexanderquispe/Documents/GitHub/Aouad–Lykouris–Zhong/tutorial/tutorial.tex).
+No te limites a manipular símbolos. Explica por qué cada componente está ahí.
+
+8. Observation 1
 
-## User
+Reconstruye Observation 1 con especial cuidado.
 
+Debes explicar:
 
-# Files mentioned by the user:
+- por qué public precision (X\_t) complementa el esfuerzo
+- por qué agentic-AI precision (\tau\_A) sustituye el esfuerzo
+- de dónde sale cada cross-partial
+- qué propiedades de (G), (g) y (g') determinan los signos
+- qué papel cumple (\Delta\_I=0)
+- qué papel cumple (\Delta\_X>0)
+- por qué el esfuerzo y la IA afectan la misma precisión idiosincrática
+- por qué más conocimiento general eleva el retorno de aprender sobre el caso particular
+- por qué rendimientos decrecientes en precisión generan crowd-out
+- qué condiciones se necesitan para que los signos sean estrictos
+- qué ocurre en la frontera (X\_t=0)
 
-## codex-clipboard-af293929-d5b1-4f6e-b934-33271d60c0e6.png: /var/folders/9r/dv5kdqsn3jj_s4vlrjy493p00000gn/T/codex-clipboard-af293929-d5b1-4f6e-b934-33271d60c0e6.png
+Separa claramente:
 
-## My request for Codex:
-how do they arrive to this prepositions
-its not clear to me
+- resultado escrito por los autores
+- derivación independiente
+- interpretación económica
+- condición técnica
+- posible imprecisión o pregunta abierta
 
+No declares un error del paper sin demostrarlo.
 
-## Assistant
+9. Conexión con la dinámica
 
-Yes. The missing step is the recursion hidden inside “detailed balance.” I’ll expand it in the tutorial from the edge-flow equation
-\[
-\pi_k\lambda(e_k)=\pi_{k+1}\mu
-\]
-through \(\pi_2,\pi_3,\ldots,\pi_k\), then impose \(\sum_k\pi_k=1\), and finally derive the effort and productivity formulas as ordinary probability-weighted averages.
+Sin reproducir las pruebas dinámicas, explica la cadena:
 
-## Assistant
+[
+X\_t
+\longrightarrow
+e\_t
+\longrightarrow
+E\_t
+\longrightarrow
+X\_{t+1}.
+]
 
-I’ve expanded that passage from the underlying “probability flow” idea: first what a transition rate means, then the adjacent-state balance equation, the recursion for every \(\pi_k\), normalization, and finally why effort and productivity are probability-weighted averages. I’m compiling and checking the revised pages now.
+Explica intuitivamente la recursión de precisión:
 
-## Assistant
+- cómo la precisión previa y el nuevo esfuerzo mejoran la estimación del estado común
+- por qué las precisiones se suman
+- por qué la innovación (\Sigma^2) vuelve obsoleto parte del conocimiento
+- por qué existe un límite superior para la precisión pública
+- cómo la complementariedad entre (X\_t) y esfuerzo puede crear persistencia
+- cómo la sustitución entre IA y esfuerzo puede debilitar el stock futuro
 
-The document now compiles cleanly to 30 pages. The only overfull warning is the same tiny \(3.8\) pt notation-table warning elsewhere in the tutorial; the newly expanded derivation introduced no new overflow warning. I’m checking both the mathematical text extraction and the rendered pages, especially the new pages 11–13.
+Resume, sin demostrar, qué papel cumple la elasticidad de esfuerzo y por qué aparece el umbral relacionado con (\varepsilon=4).
 
-## Assistant
+10. Trampas que debes auditar
 
-I expanded the tutorial to derive the proposition from first principles:
+Analiza sin asumir una respuesta:
 
-\[
-\underbrace{\pi_k(a)\lambda(e_k(a))}_{\text{flow from }s_k\text{ to }s_{k+1}}
-=
-\underbrace{\pi_{k+1}(a)\mu}_{\text{flow from }s_{k+1}\text{ to }s_k}.
-\]
+- ¿El bienestar aumenta necesariamente con la precisión de la IA?
+- ¿Cuál es el efecto directo de una mayor (\tau\_A)?
+- ¿Cuál es el efecto indirecto mediante esfuerzo y conocimiento general?
+- ¿Qué condiciones necesita el resultado de bienestar no monotónico?
+- ¿Qué supuestos relajan los autores en la sección 5?
+- ¿Qué supuestos permanecen sin relajar?
+- ¿Assumption 1, especialmente (\Delta\_I=0), se relaja realmente en alguna parte?
+- ¿La afirmación estricta de Observation 1 requiere (X\_t>0)?
+- ¿Qué ocurre con las derivadas en la frontera?
+- ¿Qué partes son resultados del paper y cuáles son solo interpretación?
 
-Dividing by \(\mu\) gives the adjacent-state recursion
+Identifica dos o tres posibles candidatos para la futura verificación manuscrita. No selecciones todavía uno como definitivo.
 
-\[
-\pi_{k+1}(a)=\pi_k(a)\frac{\lambda(e_k(a))}{\mu}.
-\]
+11. Archivos autorizados en esta fase
 
-Applying it repeatedly produces the product formula. The normalization condition \(\sum_k\pi_k(a)=1\) then determines \(\pi_1(a)\). The revised section also explains:
+Puedes crear o actualizar únicamente:
 
-- What a transition rate means for economics students.
-- Why “rate” is not the same as “probability.”
-- Every multiplication in the product formula.
-- The empty-product convention.
-- Why the exponent \(-1\) means taking a reciprocal.
-- Why stationary effort and productivity are probability-weighted averages.
-- A complete two-state numerical example.
-- Why detailed balance satisfies the full stationarity equations.
+- `AGENTS.md`
+- `README.md`, solo como scaffold de trabajo
+- `prompts.md`
+- `paper/README.md`
+- `analysis/paper_map.md`
+- `hand/README.md`
+- `extensions.md`, solo como lista de preguntas todavía no resueltas
+- `.gitignore`
 
-The PDF was compiled with Tectonic and all 30 pages were visually verified.
+`analysis/paper_map.md` debe contener en inglés:
 
-:codex-file-citation{path="/Users/alexanderquispe/Documents/GitHub/Aouad–Lykouris–Zhong/output/pdf/human_ai_productivity_paradoxes_tutorial.pdf" purpose="output"}
+- source and version record
+- research question
+- economic mechanism
+- timing and information structure
+- notation table
+- agent problem
+- equation-by-equation interpretation
+- Observation 1
+- link from static incentives to dynamics
+- read-only summary of long-run results
+- welfare question
+- Section 5 audit
+- unresolved questions
+- possible handwritten checks
 
-Editable source: [tutorial.tex](/Users/alexanderquispe/Documents/GitHub/Aouad–Lykouris–Zhong/tutorial/tutorial.tex)
+Distingue en todo momento entre:
 
-## User
+- `PAPER`
+- `DERIVATION`
+- `INTERPRETATION`
+- `OPEN QUESTION`
 
-a ese nivel de detalle necesito todas las explicaciones por favor para toda las seccion 4 de este tutorial? 
+En `prompts.md`, registra este prompt literalmente. No reconstruyas, resumas ni mejores mi redacción. No inventes una respuesta anterior. La respuesta real de esta fase se incorporará después usando el output que me entregues.
 
+12. Git y límites de autorización
 
-## User
+Antes del commit, ejecuta:
 
-a ese nivel de detalle necesito todas las explicaciones por favor para toda las seccion 4 de este tutorial, podrias actualizarlo para yo tambien entender paso a paso
+- `git status`
+- `git diff --check`
+- búsqueda de referencias residuales al paper del template
+- búsqueda de credenciales, tokens, códigos de dispositivo y rutas privadas
+- comprobación de que el PDF del paper está ignorado
+- revisión de archivos en staging
 
-## Assistant
+Crea un commit pequeño y descriptivo en `analysis`.
 
-Sí. Voy a reconstruir toda la Section 4 en inglés con el mismo estándar pedagógico: definir cada objeto antes de usarlo, derivar cada igualdad línea por línea, explicar la intuición económica, tratar los casos de frontera y añadir ejemplos numéricos breves. Después la compilaré con Tectonic y revisaré visualmente el PDF completo. Usaré el flujo de trabajo de PDF porque la entrega final debe quedar compilada y verificada.
+Haz push a `origin/analysis`.
 
-## Assistant
+No abras todavía el PR.
 
-La Section 4 ya tiene una base correcta, pero el nivel de detalle es desigual: 4.1–4.2 están desarrolladas, mientras que 4.3–4.11 todavía condensan varios argumentos importantes. Voy a ampliar especialmente la construcción de los intervalos \(I_m\), la sensibilidad \(\Delta_m\), la prueba de dominancia estocástica, la derivación completa de \(\mathcal P'(a)\), el argumento de unimodalidad, el límite cuando \(\mu\) es grande y el caso exacto de dos estados.
+No fusiones `analysis` con `main`.
 
-## Assistant
+No comentes todavía en el issue.
 
-Ya quedó ampliada la primera mitad: ahora se deriva por qué \(I_m\) contiene exactamente \(m\) estados activos, de dónde sale cada argumento de \(\Delta_m\), qué significa una semi-elasticidad y cómo se prueba la dominancia estocástica sin omitir la expansión y cancelación de los términos. Sigo con la parte algebraicamente más exigente: reescribir \(\mathcal P(a)\) y demostrar la forma de su derivada.
+No redactes todavía:
 
-## Assistant
+- README final
+- presentación final
+- speaker notes
+- extensión definitiva
+- simulación definitiva
+- fotografía manuscrita
+- comentario de entrega
 
-Toda la Section 4 ya fue ampliada. Además de las pruebas formales, añadí ejemplos concretos para los intervalos de actividad, la dominancia estocástica, el signo de \(\Delta_m\), el umbral exacto de \(\mu\) y la reversión tipo Simpson. Ahora estoy validando que la expansión compile sin errores y que las nuevas ecuaciones no queden cortadas o demasiado densas.
+No modifiques los repositorios anteriores, EconCSLib ni auditorías privadas.
 
-## Assistant
+13. Puntos de detención
 
-La compilación produjo 41 páginas y no dejó referencias sin resolver. La Section 4 ahora ocupa aproximadamente las páginas 9–28. Los únicos avisos de ancho son los \(3.8\) pt ya existentes en la tabla del índice de notación; no aparecen avisos nuevos en la Section 4. Estoy revisando visualmente las 41 páginas y después haré una inspección ampliada de las páginas matemáticas nuevas.
+Detente y consulta si:
 
-## Assistant
+- la cuenta activa no es `amchavezu`
+- el repositorio o la carpeta ya existen
+- GitHub requiere autenticación manual
+- no puedes verificar el PDF exacto
+- las instrucciones del issue cambiaron materialmente
+- encuentras archivos preexistentes en la ruta objetivo
+- necesitas permisos elevados
+- una acción podría modificar otro repositorio
+- no puedes mantener credenciales y trazas privadas fuera del commit
 
-La revisión ampliada detectó y corrigió algunos comandos de espaciado que se estaban imprimiendo como texto literal. También estoy revisando una ruptura de página en el caso de dos estados para asegurar que el encabezado “Step 2” no quede recortado al comenzar una página nueva.
+14. Reporte final
 
-## Assistant
+Responde en español con esta estructura:
 
-Listo. Reescribí toda la Section 4 en inglés, ahora desarrollada paso a paso y sin asumir familiaridad previa con la matemática.
+1. Estado de la fase
 
-Incluye explicaciones detalladas de:
+   - `COMPLETED` o `BLOCKED`
 
-- Transition rates, stationary probabilities y detailed balance.
-- Construcción e interpretación de los intervalos \(I_m\).
-- Origen de cada término de la sensitivity gap \(\Delta_m\).
-- Prueba completa de first-order stochastic dominance.
-- Derivación de \(\mathcal P(a)\) y \(\mathcal P'(a)\).
-- Demostración del resultado de one crossing mediante Cauchy–Schwarz.
-- Expansión asintótica para \(\mu\) grande.
-- Caso exacto de dos estados, incluido el umbral \(\bar\mu_2\).
-- Construcción de una caída de productividad arbitrariamente grande.
-- Descomposición matemática del Simpson-type reversal.
-- Ejemplos numéricos en los puntos más difíciles.
+2. Preflight breve
 
-El tutorial tiene ahora 41 páginas. Fue compilado con Tectonic y revisé visualmente todas las páginas, incluyendo la Section 4 ampliada a resolución completa.
+   - cuenta GitHub
+   - ruta
+   - herramientas esenciales
+   - confirmación de que no reinstalaste nada
 
-El PDF actualizado es :codex-file-citation{path="/Users/alexanderquispe/Documents/GitHub/Aouad–Lykouris–Zhong/output/pdf/human_ai_productivity_paradoxes_tutorial.pdf" purpose="output"}.
+3. Repositorio
 
-Fuente editable: [tutorial.tex](/Users/alexanderquispe/Documents/GitHub/Aouad–Lykouris–Zhong/tutorial/tutorial.tex)
+   - URL
+   - ruta local
+   - visibilidad
+   - rama activa
+   - upstream
+   - commit
+   - push
 
-## User
+4. Qué pide el profesor
 
-por favor ahora para necesito hacer una presentacion con todos estos detalles en overleaf beamer para mis estudiantes mi correo es aquisper@caltech.edu
-trata de hacer el beamer wide para que entren las ecuaciones por ahora solo incluye todo lo necesario para entender secciones 3 y 4 pero en los primeros slides trata de presentar las ideas principales del paper de manera conceptual y cuales son las principales conclusiones al inicio antes de empezar toda la matematica, igual que en el tutorial no  te sales las explicaciones
+   - requisitos obligatorios
+   - deadline
+   - entregables
+   - publicación
+   - alcance read-only
 
+5. Fuente utilizada
 
-## Assistant
+   - versión exacta
+   - metadatos
+   - páginas
+   - SHA-256
+   - diferencia frente al PDF de NBER
+   - discrepancia de numeración del issue
 
-Sí. Voy a crear un deck Beamer 16:9 completamente autónomo para Overleaf, en inglés, con tu correo en la portada. Primero incluiré motivación, mecanismos y conclusiones del paper; luego desarrollaré Sections 3 y 4 con derivaciones paso a paso, checkpoints, ejemplos y transiciones pedagógicas. Usaré el flujo de presentaciones para estructurar y revisar el deck y el de PDF para compilarlo y verificar cada slide.
+6. Qué busca modelar el paper
 
-## Assistant
+   - pregunta
+   - motivación
+   - mecanismo económico
+   - externalidad
+   - feedback dinámico
+   - significado de knowledge collapse
 
-La estructura será acumulativa: primero el aparente conflicto entre efectos “within-state” y efectos de composición; después el optimizador determinista completo; finalmente, la cadena de habilidades, la distribución estacionaria, la dominancia estocástica y el teorema de productividad no monótona. Para mantener legibilidad, dividiré las pruebas largas en varios slides en lugar de comprimirlas.
+7. Mapa de ecuaciones
+   Para cada bloque, explica la fórmula, su intuición y su función dentro del modelo.
 
-## Assistant
+8. Problema del agente
 
-La apertura conceptual y toda la derivación de la Section 3 ya están escritas. El deck no comprime la prueba en una sola lámina: separa cambio de variable, factibilidad, los dos casos, el símbolo de parte positiva, productividad y ejemplos. Ahora estoy incorporando la dinámica de habilidades con el mismo ritmo.
+   - objetivo
+   - elección
+   - restricción
+   - parámetros
+   - información disponible
+   - FOC
+   - interior y esquina
 
-## Assistant
+9. Observation 1
 
-La parte de distribución estacionaria, intervalos de actividad, sensibilidad y dominancia estocástica ya está incorporada, incluyendo las cancelaciones y el ejemplo de tres estados. Falta la última secuencia: derivada de productividad, one-crossing, límite de \(\mu\) grande, caso exacto de dos estados y la reversión tipo Simpson.
+   - derivación
+   - intuición
+   - condiciones
+   - comportamiento en la frontera
+   - dudas pendientes
 
-## Assistant
+10. Dinámica y bienestar
 
-Ya está armada y compiló correctamente. Ahora estoy en la revisión visual final: voy a corregir los pocos desbordes detectados, renderizar todas las diapositivas y comprobar que las ecuaciones y explicaciones se lean bien en formato 16:9 antes de entregarte el `.tex` para Overleaf y el PDF.
+    - solo interpretación
+    - no reproducir pruebas
+    - efecto directo
+    - efecto indirecto
+    - razón de la no monotonicidad
 
-## Assistant
+11. Auditoría de la sección 5
 
-La revisión general confirma que las 92 diapositivas mantienen una secuencia pedagógica limpia: primero la intuición económica, luego el problema estático, las tasas de transición desde cero, balance detallado, distribución estacionaria y finalmente los resultados de productividad. Ya eliminé todos los avisos de desbordamiento de LaTeX; estoy comprobando ahora las láminas más densas a tamaño completo.
+    - supuestos relajados
+    - supuesto potencialmente no relajado
+    - extensiones que no debemos presentar como nuevas
 
-## Assistant
+12. Candidatos para la derivación manuscrita
 
-He creado la presentación completa en inglés:
+    - dos o tres opciones
+    - qué verificaría cada una
+    - cuál parece más útil, sin ejecutar la derivación física
 
-- 92 diapositivas en formato panorámico 16:9.
-- Introducción conceptual y conclusiones principales al inicio.
-- Derivación íntegra de las secciones 3 y 4.
-- Explicaciones desde cero de tasas de transición, balance detallado, distribución estacionaria, dominancia estocástica y resultados de productividad.
-- Ejemplos numéricos y preguntas para estudiantes.
-- Extensiones excluidas.
-- Correo `aquisper@caltech.edu` incluido.
-- Compilada con Tectonic sin errores ni desbordamientos visuales.
+13. Archivos y verificaciones
 
-Archivos:
+    - archivos creados o modificados
+    - contenido heredado eliminado
+    - controles de Git
+    - controles de privacidad
 
-- [Código Beamer para Overleaf](/Users/alexanderquispe/Documents/GitHub/Aouad–Lykouris–Zhong/beamer/sections_3_4_beamer.tex)
-- :codex-file-citation{path="/Users/alexanderquispe/Documents/GitHub/Aouad–Lykouris–Zhong/output/beamer/sections_3_4_beamer.pdf" purpose="output"}
+14. Riesgos y preguntas abiertas
 
-El archivo `.tex` es autocontenido: puedes subirlo directamente a Overleaf y establecerlo como documento principal.
+15. Siguiente acción recomendada
+    Recomienda únicamente la siguiente fase con base en lo efectivamente encontrado. No la ejecutes.
 
-## User
+No ocultes errores, incertidumbre, diferencias entre versiones ni resultados parciales.
+`````
 
-me gusto mucho la presentacion , hoy me toca la Part II. 
-Me gustaria hacerlo quizas mas como presentacion donde solo muestro ecuaciones pero voy dejando en claro en oraciones o sentences las concluciones en cada paso con texto para que los estudiantes entiendas mas que nada la intuicion, ese es mi enfoque para esta parte. Podrias por favor nuevos slides donde en la part II nos enfoquemos mas en la intuicion antes que en los detalles de paso a paso de la mate? quiero que ellos entiendan bien que idea o intuicion esta detras de cada ecuacion para esta seccion, por favor crea el tex file y compila el beamer
+## Recovery prompt - verbatim
 
+`````text
+Codex actuó correctamente según el punto de detención. No se creó nada ni se perdió trabajo.
 
-## Assistant
+La credencial inválida sí requiere reautenticación. Codex puede iniciar el proceso y tú solo deberías confirmar en el navegador. El error de `wsl.exe --status` tampoco demuestra que WSL esté roto. Primero debe probar acceso directo a Ubuntu.
 
-Voy a crear una segunda presentación independiente, dedicada únicamente a Part II. Usaré las pautas de presentaciones y PDF porque aquí importa tanto la narrativa docente como comprobar visualmente el Beamer compilado. La reorganizaré alrededor de una regla simple: una ecuación central por diapositiva, seguida inmediatamente por su lectura económica en una oración clara.
+Usa este prompt en la misma sesión de Codex:
 
-## Assistant
+```text
+Continúa la Fase 1 del kickoff desde el estado `BLOCKED` que acabas de reportar.
 
-La nueva narrativa ya está definida: comenzaré con la paradoja en una sola frase, luego convertiré tasas y probabilidades estacionarias en lenguaje económico, y recién después presentaré la brecha de sensibilidades y el teorema. Los cálculos largos quedarán fuera del flujo principal; conservaré únicamente las ecuaciones que permiten explicar el mecanismo.
+No reinicies el trabajo desde cero. Conserva como válidas las verificaciones ya completadas y resuelve los dos bloqueos: autenticación de GitHub y acceso a WSL.
 
-## Assistant
+Tienes autorización para iniciar directamente la recuperación de GitHub CLI y continuar automáticamente con el kickoff cuando la autenticación quede restaurada.
 
-El archivo ya compila: son 52 diapositivas, considerablemente más cortas y menos algebraicas que la versión completa. La secuencia conserva las ecuaciones esenciales, pero cada una está acompañada por “Economic meaning” o “Bottom line”, para que puedas enseñar la intuición antes de entrar a una demostración. Ahora estoy revisando legibilidad, densidad y diagramas diapositiva por diapositiva.
+1. Restaurar GitHub CLI
 
-## Assistant
+Primero ejecuta nuevamente:
 
-Listo. Creé una presentación independiente para Part II, más conceptual y orientada a la intuición económica:
+`gh auth status -h github.com`
 
-- 52 diapositivas en inglés y formato 16:9.
-- Una ecuación central por diapositiva.
-- Bloques recurrentes de “Economic meaning” y “Bottom line”.
-- Explicación intuitiva de tasas de transición, estacionariedad, deskilling, dominancia estocástica, sensibilidad, decay rate y Simpson’s paradox.
-- Ejemplo completo de dos estados.
-- Menos derivaciones algebraicas que la presentación anterior.
-- Compilada con Tectonic sin errores ni desbordamientos.
-- Todas las diapositivas fueron renderizadas y revisadas visualmente.
+No leas, extraigas ni muestres el token almacenado. No ejecutes `gh auth token`. No publiques credenciales, códigos o información del keyring.
 
-Archivos:
+Como la credencial actual de `amchavezu` es inválida, inicia tú mismo una autenticación segura mediante navegador:
 
-- [Código Beamer para Overleaf](/Users/alexanderquispe/Documents/GitHub/Aouad–Lykouris–Zhong/beamer/part2_intuition_beamer.tex)
-- Presentación compilada: :codex-file-citation{path="/Users/alexanderquispe/Documents/GitHub/Aouad–Lykouris–Zhong/output/beamer/part2_intuition_beamer.pdf" purpose="output"}
+`gh auth login --hostname github.com --git-protocol https --web`
 
-El `.tex` es autocontenido y puede subirse directamente a Overleaf.
+Si GitHub CLI no permite reemplazar la credencial inválida, tienes autorización para ejecutar:
 
-## User
+`gh auth logout --hostname github.com --user amchavezu`
 
-necesito exportar toda esta conversacion en md como puedo hacer eso? 
+y luego, inmediatamente:
 
+`gh auth login --hostname github.com --git-protocol https --web`
 
-## Assistant
+No cambies la configuración global de Git salvo lo estrictamente necesario para que GitHub CLI use HTTPS.
 
-Voy a revisar la documentación de Codex para darte el método correcto para exportar esta tarea completa a Markdown, incluyendo qué alternativa usar si la aplicación no ofrece un botón directo de exportación.
+Si aparece un código de dispositivo o se requiere confirmación en el navegador:
 
-## Assistant
+- muéstrame únicamente las instrucciones necesarias
+- solicita mi intervención en ese punto
+- espera a que confirme la autorización
+- no registres el código en `prompts.md`
+- no incluyas el código en archivos, commits o reportes
+- no continúes hasta comprobar que la autorización terminó
 
-Hasta donde pude verificar, la documentación oficial de OpenAI no describe actualmente un botón nativo para exportar una tarea de Codex directamente como `.md`. La forma más fiable es convertir el archivo local de la sesión. [OpenAI Developers](https://developers.openai.com/)
+Después de la confirmación, verifica:
 
-Tu conversación está almacenada aquí:
+- `gh auth status -h github.com`
+- `gh api user --jq .login`
+- que la cuenta autenticada sea exactamente `amchavezu`
+- acceso de lectura al issue y al template
+- capacidad para consultar repositorios de `amchavezu`
 
-[Archivo local de la sesión](/Users/alexanderquispe/.codex/sessions/2026/08/19/rollout-2026-08-19T04-22-59-01a01954-c000-75f0-8067-6efe559ae47a.jsonl)
+Si la cuenta autenticada no es `amchavezu`, detente.
 
-Abre Terminal y ejecuta:
+2. Verificar que el repositorio objetivo no existe
 
-```bash
-SESSION_FILE='/Users/alexanderquispe/.codex/sessions/2026/08/19/rollout-2026-08-19T04-22-59-01a01954-c000-75f0-8067-6efe559ae47a.jsonl'
-OUTPUT_FILE='/Users/alexanderquispe/Documents/GitHub/Aouad–Lykouris–Zhong/conversation.md'
+Cuando GitHub funcione, comprueba por API:
 
-jq -sr '
-  [ .[]
-    | select(.type == "event_msg"
-      and (.payload.type == "user_message"
-        or .payload.type == "agent_message"))
-    | {
-        role: (
-          if .payload.type == "user_message"
-          then "User"
-          else "Assistant"
-          end
-        ),
-        text: (.payload.message // "")
-      }
-    | select(.text != "")
-  ]
-  | reduce .[] as $m (
-      {seen: {}, out: []};
-      ($m.role + "|" + $m.text) as $key
-      | if .seen[$key]
-        then .
-        else .seen[$key] = true | .out += [$m]
-        end
-    )
-  | .out[]
-  | "## " + .role + "\n\n" + .text + "\n"
-' "$SESSION_FILE" > "$OUTPUT_FILE"
+- si existe `amchavezu/ai-04-acemoglu`
+- si existe un comentario previo de `amchavezu` en el issue 3
+
+El resultado esperado para el repositorio es que todavía no exista.
+
+Si el repositorio ya existe, detente. No lo borres, renombres ni reemplaces.
+
+3. Diagnosticar WSL sin asumir que está roto
+
+El error `E_ACCESSDENIED` de `wsl.exe --status` no basta para concluir que WSL2 no funciona.
+
+Ejecuta, sin permisos de administrador:
+
+- `Get-Command wsl.exe`
+- `wsl.exe --version`
+- `wsl.exe -l -v`
+- `wsl.exe -d Ubuntu-24.04 -- bash -lc "whoami; uname -a; pwd"`
+- si el nombre exacto de la distribución difiere, usa el que aparezca en `wsl.exe -l -v`
+
+Si `wsl.exe --status` falla pero la invocación directa de Ubuntu funciona, considera WSL operativo y documenta la diferencia.
+
+Si el entorno de Codex solicita aprobación para ejecutar `wsl.exe`, solicita únicamente ese permiso de ejecución. No abras PowerShell como administrador y no pidas elevación del sistema.
+
+Si toda invocación directa a WSL devuelve acceso denegado:
+
+- inspecciona de forma no destructiva el estado de los servicios relacionados con WSL
+- reporta el comando exacto y el error
+- detente antes de reiniciar servicios, cambiar políticas o pedir permisos de administrador
+
+4. Localizar herramientas existentes
+
+No reinstales nada.
+
+Si WSL funciona, verifica dentro de Ubuntu:
+
+- `python3 --version`
+- importación y versión de SymPy
+- `git --version`
+- `pdftotext -v`
+- `pdfinfo -v`
+- `latexmk -v`
+- `pdflatex --version`
+
+El hecho de que `pdftotext` y LaTeX no estén en el `PATH` de Windows no es un bloqueo si funcionan dentro de WSL.
+
+También busca instalaciones existentes de MiKTeX, TeX Live o Poppler en Windows solo si resulta rápido y no requiere cambiar el `PATH`.
+
+No instales ni actualices paquetes en esta fase.
+
+5. Reanudar el kickoff automáticamente
+
+Si GitHub queda autenticado como `amchavezu`, el repositorio remoto no existe y puedes trabajar mediante Windows o WSL, reanuda automáticamente el prompt anterior desde la revisión de instrucciones.
+
+No me pidas una nueva autorización para continuar.
+
+Completa el objetivo original de la Fase 1:
+
+- revisar el issue 3, la guía, el repositorio del curso y el template
+- verificar el deadline actual
+- crear el repositorio público `amchavezu/ai-04-acemoglu` desde `alexanderquispe/ai-01-aouad`
+- clonarlo en `C:\Users\marce\Documents\GitHub\ai-04-acemoglu`
+- mantener `main` sin ediciones directas
+- crear y publicar la rama `analysis`
+- descargar y verificar la versión exacta del paper usada por el curso
+- comparar el PDF de MIT con el PDF actual de NBER
+- limpiar en `analysis` el contenido académico heredado del template
+- crear el scaffold autorizado
+- leer el paper completo
+- desarrollar `analysis/paper_map.md`
+- reconstruir la intuición económica y el bloque estático
+- explicar el problema del agente y Observation 1
+- interpretar la conexión con la dinámica y el bienestar sin reproducir sus pruebas
+- auditar la sección 5
+- identificar candidatos para la derivación manuscrita
+- registrar literalmente en `prompts.md` el prompt inicial y este prompt de recuperación
+- crear un commit descriptivo en `analysis`
+- hacer push a `origin/analysis`
+
+Los archivos académicos del repositorio deben estar en inglés.
+
+Tu reporte final debe estar en español.
+
+6. Límites que siguen vigentes
+
+No:
+
+- modifiques repositorios anteriores
+- copies soluciones académicas del template o de compañeros
+- instales herramientas
+- abras todavía el PR
+- fusiones a `main`
+- comentes todavía en el issue
+- fabriques la fotografía manuscrita
+- redactes todavía la presentación final
+- inventes versiones, ecuaciones, condiciones o resultados
+- ocultes errores o diferencias entre versiones
+- registres credenciales o códigos de autenticación
+
+7. Reporte final
+
+Si completas la fase, utiliza la estructura de 15 secciones solicitada en el prompt anterior.
+
+Agrega al inicio:
+
+- cómo se resolvió la autenticación
+- si fue necesaria mi confirmación en el navegador
+- resultado de `gh api user --jq .login`
+- diagnóstico definitivo de WSL
+- ubicación efectiva de `pdftotext` y LaTeX
+
+Si vuelves a quedar bloqueado, no rellenes secciones vacías innecesarias. Reporta únicamente:
+
+1. estado `BLOCKED`
+2. bloqueo exacto
+3. comandos ejecutados
+4. resultado literal relevante
+5. acciones que sí se completaron
+6. intervención mínima que necesitas de mí
+7. cómo continuarás automáticamente después de resolverla
 ```
-
-Esto creará:
-
-[conversation.md](/Users/alexanderquispe/Documents/GitHub/Aouad–Lykouris–Zhong/conversation.md)
-
-El archivo incluirá tus mensajes, mis respuestas finales y las actualizaciones intermedias, pero excluirá instrucciones internas, razonamiento privado y registros de herramientas. Las imágenes aparecerán como referencias a sus rutas originales, no incrustadas dentro del Markdown.
-
-## User
-
-puedes correrlo tu mismo para poder exportar la conversacion? 
-
-
-## Assistant
-
-Sí. Voy a generar ahora `conversation.md` dentro de la carpeta del proyecto, conservando los mensajes visibles de ambos y eliminando duplicados técnicos, llamadas a herramientas e instrucciones internas.
+`````
