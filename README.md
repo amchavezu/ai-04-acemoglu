@@ -68,8 +68,19 @@ and \(Y\) is posterior precision about the idiosyncratic state. AI contributes
 precision. The complementarity gain is \(\Delta_X>0\), and
 \(\varepsilon>0\) is the effort-supply elasticity.
 
-The agent takes \(X\) and \(\tau_A\) as given and ignores an infinitesimal
-contribution to \(X_{t+1}\). For \(X>0\), the optimum is unique and interior:
+The three components of \(Y\) add because independent Gaussian evidence adds
+precision: prior precision \(\sigma^{-2}\), human-signal precision
+\(\lambda_Ie\), and AI precision \(\tau_A\). The function \(G\) converts a
+precision into a probability of a correct prediction. Thus
+\(G(X)\Delta_G\) is a probability times a stand-alone payoff, while
+\(G(X)G(Y)\Delta_X\) is the probability that both independent predictions are
+correct times their complementarity payoff.
+
+The agent chooses \(e\), takes \(X\) and \(\tau_A\) as given, and ignores an
+infinitesimal contribution to \(X_{t+1}\). Consequently \(\lambda_G\), the
+technology converting aggregate effort into public precision, belongs to the
+dynamic transition but not to the private FOC. For \(X>0\), the optimum is
+unique and interior:
 
 \[
 \Delta_XG(X)\lambda_Ig(Y)=e^{1/\varepsilon}.
@@ -142,5 +153,6 @@ cross-partials and the \(X=0\) boundary check.
 | `extensions.md` | Focused \(\Delta_I>0\) extension |
 | `hand/` | Derivation guide and pending photograph |
 | `presentation.tex` / `presentation.pdf` | Five-minute Beamer presentation |
-| `speaker_notes.md` | Oral script and likely questions |
+| `speaker_notes.md` | Five-minute script and technical backup |
+| `oral_defense.md` | Thirty oral-defense questions with concise answers |
 | `prompts.md` | Verbatim task prompts and available outputs |

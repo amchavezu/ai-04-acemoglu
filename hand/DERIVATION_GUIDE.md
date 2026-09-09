@@ -1,140 +1,258 @@
 # Handwritten derivation guide
 
-## Topic and limit
+## Why this is the selected check
 
-Write at most two handwritten pages titled:
+This is the best handwritten verification because it is central to the
+assigned static problem, reproduces Observation 1 independently, and exposes
+a genuine boundary issue without redoing the paper's read-only dynamic proofs.
+It fits in two pages and has a clear economic interpretation.
+
+## Suggested title
 
 **Observation 1: cross-partials and the boundary \(X=0\)**
 
-Use the baseline model with \(\Delta_I=0\). Keep every chain-rule factor
-visible. Do not include the dynamic proofs.
+Use the baseline model with \(\Delta_I=0\). Write the labels in quotation
+marks below as short margin notes.
 
-## Page 1: interior derivation
+## Page 1 -- probability technology and interior derivatives
 
-Write these steps in order.
+### 1. Define prediction success
 
-1. Define the probability-of-correct-prediction function:
+Write
 
-   \[
-   G(\tau)=2\Phi(\sqrt{\tau})-1,\qquad \tau\geq0.
-   \]
+\[
+G(\tau)=2\Phi(\sqrt{\tau})-1,
+\qquad \tau\geq0.
+\]
 
-2. Differentiate it for \(\tau>0\):
+Margin note: **``precision \(\to\) probability of a correct prediction.''**
 
-   \[
-   g(\tau)=G'(\tau)
-   =2\phi(\sqrt{\tau})\frac{1}{2\sqrt{\tau}}
-   =\frac{\phi(\sqrt{\tau})}{\sqrt{\tau}}.
-   \]
+### 2. Derive \(g=G'\)
 
-3. Rewrite and differentiate \(g\):
+For \(\tau>0\), apply the chain rule:
 
-   \[
-   g(\tau)=(2\pi)^{-1/2}e^{-\tau/2}\tau^{-1/2},
-   \]
+\[
+\begin{aligned}
+g(\tau)=G'(\tau)
+&=2\Phi'(\sqrt\tau)\frac{d\sqrt\tau}{d\tau}\\
+&=2\phi(\sqrt\tau)\frac{1}{2\sqrt\tau}\\
+&=\frac{\phi(\sqrt\tau)}{\sqrt\tau}>0.
+\end{aligned}
+\]
 
-   \[
-   g'(\tau)
-   =-\frac12\left(1+\frac1\tau\right)g(\tau)<0,
-   \qquad \tau>0.
-   \]
+Margin note: **``more precision raises success.''**
 
-4. Define total idiosyncratic precision and record its derivatives:
+### 3. Derive \(g'\)
 
-   \[
-   Y=\sigma^{-2}+\lambda_Ie+\tau_A,\qquad
-   Y_e=\lambda_I,\quad Y_X=0,\quad Y_{\tau_A}=1.
-   \]
+First rewrite the density:
 
-5. Write expected utility:
+\[
+g(\tau)=(2\pi)^{-1/2}e^{-\tau/2}\tau^{-1/2}.
+\]
 
-   \[
-   U=f(0,0)+G(X)\Delta_G+G(X)G(Y)\Delta_X
-   -\frac{\varepsilon}{\varepsilon+1}
-   e^{(\varepsilon+1)/\varepsilon}.
-   \]
+Apply the product rule:
 
-6. Differentiate with respect to effort, explicitly applying the chain rule:
+\[
+\begin{aligned}
+g'(\tau)
+&=(2\pi)^{-1/2}
+\left[-\frac12e^{-\tau/2}\tau^{-1/2}
+-\frac12e^{-\tau/2}\tau^{-3/2}\right]\\
+&=-\frac12\left(1+\frac1\tau\right)g(\tau)<0,
+\qquad \tau>0.
+\end{aligned}
+\]
 
-   \[
-   U_e
-   =G(X)\Delta_Xg(Y)Y_e-e^{1/\varepsilon}
-   =\lambda_I\Delta_XG(X)g(Y)-e^{1/\varepsilon}.
-   \]
+Margin note: **``diminishing returns to precision.''**
 
-7. Differentiate \(U_e\) with respect to \(X\):
+### 4. Define private posterior precision
 
-   \[
-   U_{eX}
-   =\lambda_I\Delta_Xg(X)g(Y)>0
-   \quad\text{for }X>0.
-   \]
+Write
 
-   Add: \(Y_X=0\), so no additional term appears.
+\[
+Y=\sigma^{-2}+\lambda_Ie+\tau_A,
+\qquad
+Y_e=\lambda_I,\quad Y_X=0,\quad Y_{\tau_A}=1.
+\]
 
-8. Differentiate \(U_e\) with respect to \(\tau_A\):
+Margin note: **``independent prior, human, and AI precisions add.''**
 
-   \[
-   U_{e\tau_A}
-   =\lambda_I\Delta_XG(X)g'(Y)<0
-   \quad\text{for }X>0.
-   \]
+### 5. Write the baseline utility and identify the choice
 
-   Add: \(Y_{\tau_A}=1\), \(G(X)>0\), and \(g'(Y)<0\).
+\[
+U(e;X,\tau_A)
+=f(0,0)+G(X)\Delta_G+G(X)G(Y)\Delta_X
+-\frac{\varepsilon}{\varepsilon+1}
+e^{(\varepsilon+1)/\varepsilon},
+\qquad e\geq0.
+\]
 
-## Page 2: boundary check and verdict
+Write underneath:
 
-9. State the interior signs and their meaning:
+\[
+\text{choice: }e;qquad
+\text{taken as given: }X,\tau_A.
+\]
 
-   \[
-   U_{eX}>0
-   \quad\Rightarrow\quad
-   X\text{ complements effort},
-   \]
+Margin note: **``probability \(\times\) payoff, minus effort cost.''**
 
-   \[
-   U_{e\tau_A}<0
-   \quad\Rightarrow\quad
-   \tau_A\text{ substitutes for effort}.
-   \]
+### 6. Differentiate with respect to effort
 
-10. Evaluate \(X=0\) separately:
+Show both chain-rule and cost steps:
 
-    \[
-    G(0)=2\Phi(0)-1=0,
-    \qquad
-    g(\tau)\sim\frac{\phi(0)}{\sqrt{\tau}}\to+\infty.
-    \]
+\[
+\begin{aligned}
+U_e
+&=G(X)\Delta_X\,g(Y)Y_e
+-\frac{\varepsilon}{\varepsilon+1}
+\frac{\varepsilon+1}{\varepsilon}e^{1/\varepsilon}\\
+&=\lambda_I\Delta_XG(X)g(Y)-e^{1/\varepsilon}.
+\end{aligned}
+\]
 
-    Therefore \(g(0)\) is not finite and \(U_{eX}\) is not a finite
-    classical cross-partial at the boundary. Nevertheless,
+Margin note: **``marginal expected payoff minus marginal cost.''**
 
-    \[
-    U(e;0,\tau_A)=f(0,0)
-    -\frac{\varepsilon}{\varepsilon+1}
-    e^{(\varepsilon+1)/\varepsilon},
-    \]
+### 7. Derive both cross-partials
 
-    so the problem is well defined and its unique optimum is \(e^*=0\).
-    Also,
+Holding \(e\) and \(\tau_A\) fixed, use \(Y_X=0\):
 
-    \[
-    U_{e\tau_A}(e;0,\tau_A)
-    =\lambda_I\Delta_XG(0)g'(Y)=0.
-    \]
+\[
+\begin{aligned}
+U_{eX}
+&=\lambda_I\Delta_XG'(X)g(Y)\\
+&=\lambda_I\Delta_Xg(X)g(Y).
+\end{aligned}
+\]
 
-11. End with this verdict:
+Holding \(e\) and \(X\) fixed, use \(Y_{\tau_A}=1\):
 
-> Observation 1 is correct on the interior \(X>0\). At \(X=0\), AI precision
-> is only a weak substitute because \(U_{e\tau_A}=0\), while \(U_{eX}\) is not
-> a finite classical cross-partial. The economic mechanism survives, but the
-> strict derivative statement needs an interior-domain qualification.
+\[
+\begin{aligned}
+U_{e\tau_A}
+&=\lambda_I\Delta_XG(X)g'(Y)Y_{\tau_A}\\
+&=\lambda_I\Delta_XG(X)g'(Y).
+\end{aligned}
+\]
 
-## Before photographing
+Margin notes: **``\(X\) raises the value of effort''** and
+**``AI lowers it through diminishing returns in \(Y\).''**
 
-- Check that all three chain-rule factors \(Y_e\), \(Y_X\), and
-  \(Y_{\tau_A}\) are shown.
-- Check that strict signs are explicitly restricted to \(X>0\).
-- Check that \(G(0)=0\) is not confused with a finite \(g(0)\).
-- Check that no dynamic proposition is claimed or proved.
-- Save the future photograph as **hand/observation1-boundary.jpg**.
+## Page 2 -- signs, boundary, and verdict
+
+### 8. Sign the interior result
+
+Write the conditions before the inequalities:
+
+\[
+X>0,\quad Y>0,\quad
+\Delta_X>0,\quad\lambda_I>0,\quad\varepsilon>0.
+\]
+
+Then
+
+\[
+g(X)>0,\quad g(Y)>0,\quad G(X)>0,\quad g'(Y)<0,
+\]
+
+so
+
+\[
+\boxed{U_{eX}>0}\quad\text{and}\quad
+\boxed{U_{e\tau_A}<0}.
+\]
+
+Margin note: **``general knowledge complements effort; agentic AI
+substitutes for effort.''**
+
+### 9. Evaluate \(X=0\) separately
+
+First compute the level:
+
+\[
+G(0)=2\Phi(0)-1=0.
+\]
+
+Then compute the limiting slope:
+
+\[
+g(X)=\frac{\phi(\sqrt X)}{\sqrt X}
+\sim\frac{\phi(0)}{\sqrt X}\longrightarrow+\infty
+\quad\text{as }X\downarrow0.
+\]
+
+Therefore \(g(0)\) is not finite, and \(U_{eX}\) is not a finite classical
+cross-partial at the boundary. But the AI cross-partial can be evaluated from
+its formula because \(Y>0\):
+
+\[
+U_{e\tau_A}(e;0,\tau_A)
+=\lambda_I\Delta_XG(0)g'(Y)=0.
+\]
+
+Margin note: **``weak substitution, not a strict negative derivative.''**
+
+### 10. Show that the optimization problem remains well defined
+
+Substitute \(G(0)=0\) into utility:
+
+\[
+U(e;0,\tau_A)
+=f(0,0)
+-\frac{\varepsilon}{\varepsilon+1}
+e^{(\varepsilon+1)/\varepsilon}.
+\]
+
+Since the cost is zero at \(e=0\) and strictly increasing for \(e>0\),
+
+\[
+\boxed{e^*(0,\tau_A)=0}.
+\]
+
+Margin note: **``the derivative issue does not make the choice problem
+undefined.''**
+
+### 11. Add one line on global weak differences
+
+Write:
+
+\[
+U_e(e;X,\tau_A)
+=\lambda_I\Delta_XG(X)g(Y)-e^{1/\varepsilon}.
+\]
+
+Because \(G(X)\) is nondecreasing on \(X\geq0\), marginal effort value is
+nondecreasing in \(X\). Because \(g(Y)\) is decreasing in \(\tau_A\), it is
+nonincreasing in \(\tau_A\); at \(X=0\) it is constant in \(\tau_A\). This is
+the discrete increasing/decreasing-differences interpretation.
+
+### 12. End with this verdict
+
+> **Observation 1 is economically correct. Its strict cross-partial signs
+> hold on the interior \(X>0\). At \(X=0\),
+> \(U_{e\tau_A}=0\) and \(U_{eX}\) is not finite, so the global statement is
+> valid only in the weak increasing/decreasing-differences sense.**
+
+## Conditions not to omit
+
+- \(X>0\) for the finite, strictly positive \(U_{eX}\) formula.
+- \(Y>0\), guaranteed here by a proper finite-variance prior.
+- \(\Delta_X>0\), \(\lambda_I>0\), and \(\varepsilon>0\).
+- \(e\geq0\), so the baseline solution at \(X=0\) is a corner.
+- The calculation uses the baseline \(\Delta_I=0\), not the extension.
+
+## Two-page layout recommendation
+
+- **Page 1:** Steps 1--7. Put the three short economic notes in the right
+  margin and box the two cross-partial formulas.
+- **Page 2:** Steps 8--12. Draw a horizontal line before the boundary check,
+  box \(e^*(0,\tau_A)=0\), and finish with the verdict in a separate box.
+- Keep the paper flat, use dark ink, and leave enough margin for a rectangular
+  crop in the slide.
+
+## Final file
+
+Photograph the completed pages clearly and save the image as:
+
+`hand/observation1-boundary.jpg`
+
+Do not create or rename that file until the physical derivation exists.

@@ -10,7 +10,10 @@ This audit uses only the May 5, 2026 MIT manuscript, *AI, Human Cognition, and K
 
 > **PAPER**
 
-Under Assumption 1, \(\Delta_I=0\), \(\Delta_G>0\), and \(\Delta_X>0\). Let
+Assumption 1 imposes \(\Delta_I=0\) and \(\Delta_X>0\). It does **not**
+impose \(\Delta_G>0\): weak monotonicity gives \(\Delta_G\geq0\), and the
+paper explicitly allows (but does not require) a strictly positive
+stand-alone gain from general knowledge. Let
 
 \[
 Y=\sigma^{-2}+\lambda_I e+\tau_A,
