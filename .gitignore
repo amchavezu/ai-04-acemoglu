@@ -16,5 +16,8 @@
 DNI*
 *_DNI*
 
-# The article itself: third-party PDF, fetch it from arXiv
+# The article itself: third-party PDF, fetched from the course-designated source
 paper/*.pdf
+
+# Local extraction, rendering, and comparison workspace
+tmp/

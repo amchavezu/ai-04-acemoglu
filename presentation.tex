@@ -1,114 +1,231 @@
 \documentclass[aspectratio=169,11pt]{beamer}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[english]{babel}
-\usepackage{amsmath,amssymb}
-\usepackage{booktabs}
-\usetheme{default}
-\usecolortheme{seahorse}
-\setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{footline}[frame number]
-\setbeamerfont{frametitle}{size=\large}
 
-\title{Aouad, Lykouris \& Zhong (2026)}
-\subtitle{\emph{Human-AI Productivity Paradoxes} --- Section 2}
-\author{Alexander Quispe}
-\date{Repository 1 \textperiodcentered{} Week of August 17--22}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+
+\definecolor{Ink}{HTML}{16283A}
+\definecolor{Teal}{HTML}{087F8C}
+\definecolor{Coral}{HTML}{D95D39}
+\definecolor{Paper}{HTML}{F7F4EE}
+\definecolor{Muted}{HTML}{526475}
+\definecolor{PaleTeal}{HTML}{DCEBED}
+\definecolor{PaleCoral}{HTML}{F3E1DA}
+
+\setbeamercolor{normal text}{fg=Ink,bg=Paper}
+\setbeamercolor{frametitle}{fg=Ink,bg=Paper}
+\setbeamercolor{structure}{fg=Teal}
+\setbeamercolor{alerted text}{fg=Coral}
+\setbeamercolor{title}{fg=Paper}
+\setbeamercolor{subtitle}{fg=Paper}
+\setbeamercolor{author}{fg=Paper}
+\setbeamercolor{date}{fg=Paper}
+\setbeamerfont{title}{series=\bfseries,size=\fontsize{27}{31}}
+\setbeamerfont{subtitle}{size=\normalsize}
+\setbeamerfont{frametitle}{series=\bfseries,size=\fontsize{19}{22}}
+\setbeamerfont{normal text}{size=\normalsize}
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=0.65cm,text margin right=0.65cm}
+
+\setbeamertemplate{frametitle}{
+  \vspace{0.30cm}
+  \insertframetitle\par
+  \vspace{0.08cm}
+  {\color{Teal}\rule{\textwidth}{0.8pt}}
+}
+
+\setbeamertemplate{footline}{
+  \leavevmode
+  \hbox{%
+    \begin{beamercolorbox}[wd=.88\paperwidth,ht=2.8ex,dp=1.2ex,leftskip=.65cm]{normal text}
+      \scriptsize\color{Muted}\texttt{github.com/amchavezu/ai-04-acemoglu}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.12\paperwidth,ht=2.8ex,dp=1.2ex,center]{normal text}
+      \scriptsize\color{Muted}\insertframenumber/5
+    \end{beamercolorbox}%
+  }
+}
+
+\newcommand{\key}[1]{\textcolor{Teal}{\textbf{#1}}}
+\newcommand{\caveat}[1]{\textcolor{Coral}{\textbf{#1}}}
+
+\title{AI, Human Cognition and\\Knowledge Collapse}
+\subtitle{Daron Acemoglu, Dingwen Kong, and Asuman Ozdaglar\\
+NBER Working Paper 34910, primary version: May 5, 2026}
+\author{Alvaro Marcelo Chávez Unyen}
+\date{\texttt{github.com/amchavezu/ai-04-acemoglu}}
 
 \begin{document}
 
-%================= PORTADA (con el enlace al repositorio) =============
+{
+\setbeamercolor{background canvas}{bg=Ink}
 \begin{frame}[plain]
-  \titlepage
-  \begin{center}\small
-    \texttt{github.com/alexanderquispe/ai-01-aouad}
-  \end{center}
+  \vspace{0.65cm}
+  {\usebeamerfont{title}\color{Paper}\inserttitle\par}
+  \vspace{0.45cm}
+  {\usebeamerfont{subtitle}\color{Paper}\insertsubtitle\par}
+  \vfill
+  {\large\color{Paper}\insertauthor\par}
+  \vspace{0.12cm}
+  {\small\color{Paper}\insertdate\par}
+  \vspace{0.45cm}
 \end{frame}
+}
 
-%================= 1. EL ART\'ICULO ====================================
-\begin{frame}{1 \textperiodcentered{} The paper and the agent's problem}
-  \textbf{Question.} When does AI assistance make a worker \emph{less} productive?
-
-  \medskip
-  \textbf{The single mechanism.} AI is a \emph{perfectly substitutable input}:
-  skill, effort and assistance enter production only through their sum.
-  \[ x \;=\; s + e + a \]
-
-  \medskip
-  \textbf{The agent's problem.} Choose effort $e$ to maximise output net of a
-  \emph{linear} cost:
-  \[ \max_{e \ge 0}\; p(s+e+a) \;-\; \gamma e \]
-
-  \smallskip
-  \begin{itemize}\small
-    \item $p$ weakly increasing, concave, twice differentiable; $\gamma>0$.
-    \item Only constraint: $e \ge 0$ --- and it binds. That is the whole result.
+\begin{frame}{The paper and the agent's problem}
+\small
+\begin{columns}[T,totalwidth=\textwidth]
+\begin{column}{0.39\textwidth}
+  \key{One decision needs two predictions}
+  \begin{itemize}\setlength\itemsep{0.06cm}
+    \item \(X\): precision about the \textbf{common} state
+    \item \(Y\): precision about this \textbf{particular} case
   \end{itemize}
+  Their joint usefulness makes them complements.
+
+  \vspace{0.10cm}
+  \key{Knowledge collapse}\\[-0.02cm]
+  Less effort weakens public learning; inherited \(X_t\) can converge to zero.
+\end{column}
+\begin{column}{0.58\textwidth}
+  \key{Choose \(e\geq0\); take \(X,\tau_A\) as given}
+  \[
+  \max_{e\geq0}\;
+  f(0,0)+G(X)\Delta_G+G(X)G(Y)\Delta_X-c(e)
+  \]
+  {\scriptsize
+  \(G(X)\Delta_G\): probability \(\times\) stand-alone gain\\
+  \(G(X)G(Y)\Delta_X\): joint probability \(\times\) complementarity gain\\
+  \(c(e)\): resource cost of the chosen effort
+  }
+
+  \vspace{0.04cm}
+  \[
+  Y=\underbrace{\sigma^{-2}}_{\text{prior}}
+  +\underbrace{\lambda_Ie}_{\text{human signal}}
+  +\underbrace{\tau_A}_{\text{AI signal}}
+  \]
+  {\small Independent Gaussian evidence \(\Rightarrow\) precisions add.}
+\end{column}
+\end{columns}
+
+\vfill
+{\color{Coral}\rule{\textwidth}{0.8pt}}\\[-0.04cm]
+{\small\textbf{Externality.} Effort also creates public precision
+\(\lambda_GE_t\), but a short-lived atomistic agent does not value it.}
 \end{frame}
 
-%================= 2. EL RESULTADO ===================================
-\begin{frame}{2 \textperiodcentered{} Proposition 2.1, with all its conditions}
-  Define $x^{*}$ as the \emph{largest} maximiser of $p(x)-\gamma x$:
-  \[ x^{*} \;=\; \max\,\arg\max_{x}\;\bigl[\,p(x)-\gamma x\,\bigr] \]
+\begin{frame}{Main result: complements and substitutes}
+\small
+\begin{columns}[T,totalwidth=\textwidth]
+\begin{column}{0.43\textwidth}
+  \key{Economic logic}
 
-  \textbf{Regularity condition} (without it $x^{*}$ need not exist):
-  \[ \limsup_{x\to\infty} \frac{p(x)}{x} \;<\; \gamma \]
+  \vspace{0.08cm}
+  General knowledge makes case learning more valuable:
+  \[
+  X\uparrow\quad\Rightarrow\quad MB_e\uparrow.
+  \]
 
-  \medskip
-  \textbf{Then}
-  \[ e^{*}(s,a) = \bigl(x^{*}-s-a\bigr)_{+}, \qquad
-     p^{*}(s,a) = \max\bigl\{\,p(x^{*}),\; p(s+a)\,\bigr\} \]
+  Effort and AI improve the same \(Y\); diminishing returns make them substitutes:
+  \[
+  \tau_A\uparrow\quad\Rightarrow\quad MB_e\downarrow.
+  \]
+\end{column}
+\begin{column}{0.54\textwidth}
+  \[
+  U_e=\lambda_I\Delta_XG(X)g(Y)-e^{1/\varepsilon}=0
+  \]
+  \[
+  \underbrace{U_{eX}}_{\text{complementarity}}
+  =\lambda_I\Delta_Xg(X)g(Y)>0
+  \]
+  \[
+  \underbrace{U_{e\tau_A}}_{\text{substitution}}
+  =\lambda_I\Delta_XG(X)g'(Y)<0
+  \]
+  \key{Strict-sign domain}\\[-0.05cm]
+  \(X,Y,\Delta_X,\lambda_I,\varepsilon>0\), with \(g>0\) and \(g'<0\).
+\end{column}
+\end{columns}
 
-  \medskip
-  \footnotesize\emph{Intuition.} The agent has one target level of total input;
-  he tops it up with effort, and once skill plus AI already reach it he simply
-  stops working.
+\vfill
+\caveat{Boundary.} At \(X=0\), \(U_{e\tau_A}=0\) and \(g(0)\) is not finite.
+Strict signs are interior; discrete comparisons preserve the weak global logic.
 \end{frame}
 
-%================= 3. LO QUE HICE ====================================
-\begin{frame}{3 \textperiodcentered{} What I did}
-  \textbf{Reproduced} Proposition 2.1 by hand --- the interior-versus-corner
-  split, with no differentiation in the proof (\texttt{hand/}).
+\begin{frame}{What I did: test the boundary assumption}
+\small
+\begin{columns}[T,totalwidth=\textwidth]
+\begin{column}{0.43\textwidth}
+  \key{1. Audited Observation 1}\\[-0.01cm]
+  The mechanism is right; strict cross-partials require \(X>0\).
 
-  \medskip
-  \textbf{Assumptions I considered relaxing}
-  \begin{itemize}\small
-    \item \textbf{Linear cost $\to$ convex.} \emph{Dead end}: the authors already
-      do it in Appendix D (Props. D.3, D.6). Replication, not extension.
-    \item \textbf{Myopia.} A two-period agent who internalises skill dynamics.
-      Never relaxed anywhere in the paper --- this is the live one.
-    \item \textbf{Complementarity inside $p(\cdot)$} rather than as an added
-      interaction term. Harder: \S{}4.4 and \S{}5.3 partly pre-empt it.
-  \end{itemize}
+  \vspace{0.25cm}
+  \key{2. Relaxed \(\Delta_I=0\)}\\[-0.02cm]
+  Baseline: case-specific correctness has \emph{no} value if the common
+  prediction is wrong.
 
-  \medskip
-  \textbf{Also produced} a full step-by-step tutorial of the paper and two
-  lecture decks (\texttt{extra/}).
+  \vspace{0.10cm}
+  Useful benchmark, but strong: case knowledge may still improve triage when
+  general knowledge is poor.
+\end{column}
+\begin{column}{0.54\textwidth}
+  \key{Own extension: \(\Delta_I>0\)}
+  {\small
+  \[
+  U_e=\lambda_Ig(Y)
+  \underbrace{[\Delta_I+G(X)\Delta_X]}_{\substack{\text{stand-alone return}\\+\ \text{weighted complementarity}}}
+  -e^{1/\varepsilon}.
+  \]
+  }
+  At \(X=0\), the \(\Delta_I\) return survives:
+  \[
+  \Delta_I>0
+  \Rightarrow e_\Delta(0,\tau_A)>0
+  \Rightarrow F_\Delta(0)>0.
+  \]
+
+  \caveat{What this proves}\\[-0.02cm]
+  Zero is not a fixed point. Positive low-knowledge states and welfare remain open.
+\end{column}
+\end{columns}
+
+\vfill
+{\scriptsize Section 5 changes aggregation, synthetic data, or public learning
+\(e^\beta\); it does not relax \(\Delta_I=0\).}
 \end{frame}
 
-%================= 4. LA IA =========================================
-\begin{frame}{4 \textperiodcentered{} Where I did not believe the AI}
-  \textbf{What I asked.} ``What is the most natural extension of this model?''
+\begin{frame}{\hspace{0.55cm}Where I did not believe the AI}
+\begin{columns}[T,totalwidth=\textwidth]
+\begin{column}{0.29\textwidth}
+  \centering
+  \includegraphics[width=\linewidth,height=0.63\textheight,keepaspectratio]
+  {hand/observation1-boundary.jpg}\\[-0.03cm]
+  {\tiny Full two-page check: interior above, boundary below}
+\end{column}
+\begin{column}{0.68\textwidth}
+  \centering
+  \includegraphics[width=0.88\linewidth,height=0.37\textheight,
+    keepaspectratio,trim=4bp 6bp 4bp 420bp,clip]
+  {hand/observation1-boundary.jpg}\\[-0.02cm]
+  {\tiny Enlarged boundary calculation from the same photograph}
 
-  \medskip
-  \textbf{What the model answered.} Relax the linear cost $c(e)=\gamma e$ to a
-  strictly convex $c(e)$ --- presented confidently as an open direction.
+  \vspace{0.04cm}
+  \begin{minipage}{0.95\linewidth}
+  \small
+  \key{Checked claim.} Strict complementarity and substitution were read as
+  global derivative statements. At \(X=0\), however,
+  \(G(0)=0\), \(U_{e\tau_A}=0\), and
+  \(g(X)\to+\infty\) as \(X\downarrow0\).
 
-  \medskip
-  \textbf{My verdict: \textcolor{red}{incorrect as an extension}.}
-  \begin{itemize}\small
-    \item Appendix D is titled \emph{``Extension to convex cost functions''} and
-      redoes Sections 2--4 under strictly convex cost.
-    \item So the proposal is already in the paper. I checked the appendix
-      directly rather than taking the answer at face value.
-    \item \emph{Caveat worth keeping:} Appendix D covers \S\S{}2--4 but \textbf{not}
-      \S{}5, so convex cost applied to the skill-polarisation result is genuinely
-      untouched.
-  \end{itemize}
-
-  \medskip
-  \footnotesize The step I re-derived by hand is in \texttt{hand/} --- I did not
-  trust the algebra of the first-order condition until I had written it out.
+  \vspace{0.06cm}
+  \caveat{Verdict.} Correct on the interior; the strict cross-partial wording
+  needs a boundary-domain qualification.
+  \end{minipage}
+\end{column}
+\end{columns}
 \end{frame}
 
 \end{document}
