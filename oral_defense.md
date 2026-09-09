@@ -366,3 +366,109 @@ respectively. None changes the production decomposition.
 
 **Common mistake to avoid.** Do not ignore that Section 5.2 reaches a related
 positive-floor implication through a different mechanism.
+
+## 11. Lean formalization
+
+### Basic -- What exactly did Lean verify?
+
+**Short answer.** It verified the selected calculus: the precision map and its
+derivatives, Observation 1's conditional signs, the weak boundary comparisons,
+the baseline corner, and the extension's conditional transition result.
+
+**Technical backup.** The public endpoints are imported by
+`lean/MainTheorems.lean`; each theorem compiles against pinned Mathlib and its
+visible hypotheses.
+
+**Common mistake to avoid.** Compiler success does not certify that the whole
+economic model or its empirical assumptions are correct.
+
+### Basic -- Are there any proof holes or custom axioms?
+
+**Short answer.** No. The source contains no `sorry`, `admit`, or custom
+`axiom` declarations.
+
+**Technical backup.** `#print axioms` reports only `propext`,
+`Classical.choice`, and `Quot.sound`, the standard foundations used by
+Lean/Mathlib.
+
+**Common mistake to avoid.** Do not claim the development is axiom-free in the
+foundational sense; claim that it introduces no project-specific axioms.
+
+### Intermediate -- Did Lean verify the economic interpretation?
+
+**Short answer.** No. Lean verifies logical consequences of definitions and
+hypotheses; complementarity, externality, and knowledge collapse remain
+economic interpretations of those objects.
+
+**Technical backup.** The code proves monotone or antitone marginal incentives.
+It does not prove that a medical or investment environment is accurately
+represented by the model.
+
+**Common mistake to avoid.** Do not equate a type-checked theorem with model
+validation.
+
+### Intermediate -- Did you formalize the normal CDF itself?
+
+**Short answer.** I used an equivalent integral of Mathlib's standard normal
+density instead of assuming a black-box CDF derivative.
+
+**Technical backup.** `precisionSuccess` is twice the integral from zero to
+`sqrt tau`; the fundamental theorem of calculus and the chain rule prove
+`G' = g` for positive precision.
+
+**Common mistake to avoid.** Do not say the probability statement was merely
+postulated; the analytic representation was proved, while the signal-model
+interpretation was documented.
+
+### Intermediate -- Which assumptions enter as hypotheses?
+
+**Short answer.** Positivity and interior-domain conditions are explicit. The
+extension's root-existence endpoint additionally assumes a finite upper effort
+where marginal utility is nonpositive.
+
+**Technical backup.** Uniqueness follows from strict decrease and is not
+assumed. Transition positivity assumes positive public productivity and
+effort, plus nonnegative innovation variance.
+
+**Common mistake to avoid.** Do not hide the upper-bracket condition under the
+phrase “fully automatic existence.”
+
+### Difficult -- Why is the repository only partially formalized?
+
+**Short answer.** The selected static mathematics is proved, but the Gaussian
+Bayesian signal space, continuum aggregation, full dynamics, and welfare are
+outside the Lean model.
+
+**Technical backup.** `privatePrecision` encodes the additive formula from
+equation (4); Lean does not reconstruct that formula from independent random
+variables. The transition theorems are conditional implications, not a full
+equilibrium construction.
+
+**Common mistake to avoid.** Do not downgrade the proved calculus to a toy,
+but do not call 69 pages of economics fully formalized.
+
+### Difficult -- How does the Lean result map to Observation 1?
+
+**Short answer.** Separate theorems prove the positive public cross-partial and
+negative AI cross-partial on the interior, then finite-comparison theorems
+preserve weak monotonicity at the boundary.
+
+**Technical backup.** The code also proves the right limit
+`g(tau) -> +infinity` as `tau` approaches zero and proves the baseline optimum
+at zero directly from utility levels.
+
+**Common mistake to avoid.** Do not evaluate a totalized quotient at zero and
+mistake that value for a classical derivative.
+
+### Difficult -- How does the extension appear in Lean?
+
+**Short answer.** The modified utility includes the autonomous
+`DeltaI` return, which makes marginal effort positive at the zero-public-
+precision boundary and conditionally implies a positive next-period stock.
+
+**Technical backup.** Lean proves positivity at zero, strict decrease of the
+boundary FOC, uniqueness of any root, existence under the explicit bracket,
+and `FDelta(0) > 0` once positive effort enters the paper's transition.
+
+**Common mistake to avoid.** Do not infer the stability or welfare of other
+positive fixed points; those remain open.

@@ -1,0 +1,19 @@
+name = "knowledge-collapse"
+version = "0.1.0"
+defaultTargets = ["MainTheorems"]
+
+[leanOptions]
+autoImplicit = false
+pp.unicode.fun = true
+weak.linter.mathlibStandardSet = true
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.30.0-rc2"
+
+[[lean_lib]]
+name = "KnowledgeCollapse"
+
+[[lean_lib]]
+name = "MainTheorems"

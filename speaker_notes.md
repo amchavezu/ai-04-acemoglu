@@ -161,7 +161,9 @@ is positive at zero effort, strict concavity gives a unique positive choice,
 and that human effort creates a positive public signal. Therefore the
 transition maps zero into positive precision: \(F_\Delta(0)>0\). Exact zero is
 not a steady state. This does not rule out a small positive steady state or
-establish any welfare result.
+establish any welfare result. I also encoded the selected calculus and
+boundary argument in Lean, where the stated theorems compile without proof
+holes.
 
 ### Intuition behind the equation
 
@@ -197,6 +199,15 @@ F_\Delta(0)=\left[\Sigma^2+
 Sections 5.1--5.3 instead change aggregation, add synthetic public data, or
 change public knowledge production to \(e^\beta\); none relaxes
 \(\Delta_I=0\).
+
+The Lean audit proves the integral precision technology, its two derivatives,
+the interior and weak comparative statics, the baseline corner, and the
+extension's conditional transition implication. It does not infer economic
+meaning from syntax or formalize the full stochastic environment. The
+positive extension FOC root is proved unique and positive once an explicit
+finite upper point with nonpositive marginal utility is supplied; that
+bracketing condition is the remaining analytic hypothesis in the existence
+endpoint.
 
 ### Transition
 

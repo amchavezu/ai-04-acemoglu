@@ -19,5 +19,9 @@ DNI*
 # The article itself: third-party PDF, fetched from the course-designated source
 paper/*.pdf
 
+# Lean/Lake build products
+lean/.lake/
+lean/.cache/
+
 # Local extraction, rendering, and comparison workspace
 tmp/
