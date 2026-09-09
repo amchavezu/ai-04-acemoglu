@@ -139,6 +139,19 @@ the optimum at \(X=0\) becomes uniquely positive. Therefore
 zero-knowledge collapse, but it does not establish that positive
 low-knowledge steady states disappear.
 
+## Lean verification
+
+A post-submission Lean 4/Mathlib audit formalizes the selected static
+calculus: the precision technology and its derivatives, the interior signs in
+Observation 1, the weak finite comparisons, the \(X=0\) corner, and the
+conditional zero-not-fixed-point implication of the \(\Delta_I>0\) extension.
+The build has no proof holes or custom axioms. Coverage is intentionally
+partial for the economic model: Gaussian updating, continuum-agent
+aggregation, long-run dynamics, and welfare are not formalized, and existence
+of the extension's positive FOC root uses an explicit upper-bracket condition.
+See [`lean/README.md`](lean/README.md) for the reproducible build and exact
+scope.
+
 ## Hand verification
 
 `hand/observation1-boundary.jpg` - two-page handwritten verification of
@@ -154,5 +167,6 @@ Observation 1, including the interior cross-partials and the boundary \(X=0\).
 | `hand/` | Derivation guide, two source pages, and ordered composite |
 | `presentation.tex` / `presentation.pdf` | Five-minute Beamer presentation |
 | `speaker_notes.md` | Five-minute script and technical backup |
-| `oral_defense.md` | Thirty oral-defense questions with concise answers |
+| `oral_defense.md` | Oral-defense questions with concise technical backup |
+| `lean/` | Reproducible Lean/Mathlib formalization and validation report |
 | `prompts.md` | Verbatim task prompts and available outputs |

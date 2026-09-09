@@ -3122,3 +3122,208 @@ Responde en español y de forma ejecutiva:
 
 Si el estado es `SUBMITTED`, no recomiendes otra fase. Solo enumera cualquier mejora opcional que no afecte la validez de la entrega.
 <image name=[Image #1] path="C:\Users\marce\Downloads\WhatsApp Image 2026-09-08 at 22.02.32 (1).jpeg"></image><image name=[Image #2] path="C:\Users\marce\Downloads\WhatsApp Image 2026-09-08 at 22.02.32.jpeg"></image>
+
+## User - Lean formalization phase
+
+Continúa Repository 4 como una actualización posterior a la entrega ya publicada.
+
+La instrucción anterior de detenerte si el repositorio ya había sido fusionado queda sustituida por esta autorización explícita. El profesor ha solicitado agregar al repositorio toda la formalización Lean de la derivación matemática. Por tanto, sí estás autorizado a modificar el repositorio mediante una nueva rama, un nuevo PR y un nuevo merge.
+
+Esta es una actualización posterior real. No debes reescribir la historia, modificar commits anteriores, alterar timestamps, hacer force push ni presentar Lean como si hubiera formado parte de la entrega original.
+
+Repositorio:
+- Remoto: https://github.com/amchavezu/ai-04-acemoglu
+- Ruta prevista: C:\Users\marce\Documents\GitHub\ai-04-acemoglu
+- Autor: Alvaro Marcelo Chávez Unyen
+- Estado conocido: PR #1 ya fusionado a main y repositorio publicado
+- Rama nueva sugerida: lean-formalization
+
+Objetivo de esta fase
+
+Agregar una formalización Lean completa, compilable y académicamente honesta de la derivación matemática desarrollada en el proyecto. Debes encargarte directamente de inspeccionar el modelo, diseñar la formalización, escribir las pruebas, compilarlas, documentarlas, integrarlas mediante PR y fusionarlas si todas las verificaciones son satisfactorias.
+
+No quiero una mera transcripción simbólica ni un archivo lleno de supuestos que hagan triviales las conclusiones. Debes usar tus herramientas matemáticas y de Lean para determinar la mejor arquitectura de formalización y distinguir claramente:
+
+1. Qué resultados se demuestran directamente desde definiciones.
+2. Qué resultados requieren hipótesis analíticas explícitas.
+3. Qué aspectos del modelo económico no se representan completamente en Lean.
+4. Qué afirmaciones del proyecto no corresponde formalizar porque están fuera del alcance estático.
+
+Preflight breve
+
+Antes de modificar archivos:
+
+1. Verifica que la ruta corresponde exactamente a `ai-04-acemoglu`.
+2. Verifica que `main` está limpio y sincronizado con `origin/main`.
+3. Confirma el estado del PR #1 sin modificarlo.
+4. Verifica Lean, Elan y Lake en WSL.
+5. Inspecciona, sin modificar, EconCSLib en:
+   `/home/marcelo_chvez/projects/EconCSLib`
+6. Revisa el contenido actual de README, `analysis/`, `extensions.md`, `hand/`, `presentation.tex`, `speaker_notes.md`, `oral_defense.md` y `prompts.md`.
+7. Identifica si el repositorio ya tiene configuración Lean reutilizable.
+
+No reinstales herramientas que funcionen. No modifiques EconCSLib, repositorios anteriores ni archivos externos al repositorio actual. Si `main` no está limpio, existen cambios locales desconocidos o el remoto no coincide, detente y reporta el problema.
+
+Flujo Git autorizado
+
+Si el preflight es satisfactorio:
+
+1. Actualiza `main` de forma segura y sin reescribir historia.
+2. Crea una rama nueva desde el `main` publicado, preferentemente `lean-formalization`.
+3. Realiza todo el trabajo en esa rama.
+4. Al finalizar, haz commit y push.
+5. Abre un nuevo PR hacia `main`.
+6. Fusiona el PR únicamente si todas las pruebas, compilaciones y auditorías terminan correctamente.
+7. No uses squash, rebase destructivo, force push ni amend sobre commits publicados.
+8. No cierres, edites ni elimines el PR #1.
+9. No edites ni elimines el comentario de entrega existente en el issue del curso.
+10. No publiques un nuevo comentario en el issue salvo que las instrucciones oficiales exijan expresamente anunciar la actualización. La URL ya publicada apunta al mismo repositorio.
+
+Alcance matemático
+
+Formaliza el bloque matemático que sustenta la derivación manuscrita, Observation 1 y la extensión propia del proyecto. Inspecciona primero las fuentes existentes y reconstruye las pruebas con rigor, sin asumir que una lista previa de fórmulas es suficiente.
+
+La formalización debe cubrir, en la medida razonablemente posible:
+
+- La tecnología que transforma precisión en probabilidad de predicción correcta.
+- La función marginal correspondiente y sus propiedades relevantes.
+- Positividad y monotonía o rendimientos marginales decrecientes en el dominio apropiado.
+- La precisión posterior privada y la manera en que depende del esfuerzo y de la precisión de la IA.
+- El beneficio marginal del esfuerzo en el modelo base.
+- La complementariedad entre conocimiento general y esfuerzo.
+- La sustitución entre precisión de la IA y esfuerzo.
+- Las condiciones de dominio necesarias para que los signos sean estrictos.
+- El tratamiento separado de la frontera `X = 0`.
+- La diferencia entre cross-partials interiores y afirmaciones globales débiles.
+- El resultado del modelo base según el cual el esfuerzo óptimo en `X = 0` es cero.
+- La extensión con valor autónomo de la información particular.
+- El resultado de la extensión según el cual el esfuerzo puede ser estrictamente positivo en `X = 0`.
+- La consecuencia, correctamente condicionada, de que cero deja de ser un punto fijo bajo la extensión.
+
+No formalices como teoremas demostrados resultados dinámicos, de estabilidad o bienestar que el proyecto no haya establecido. No introduzcas calibraciones particulares como `ε = 4` salvo que sean indispensables y estén justificadas.
+
+Arquitectura Lean
+
+Elige una estructura clara y mantenible dentro de una carpeta `lean/`. Puedes crear un proyecto Lake autocontenido o una configuración compatible con EconCSLib, según lo que determine la inspección.
+
+Como mínimo, debe quedar:
+
+- Código fuente Lean organizado por temas o dependencias.
+- Archivo de entrada que permita verificar toda la formalización.
+- Configuración necesaria para reproducir el build.
+- `lean/README.md` con instrucciones exactas de compilación.
+- Una tabla o documento que relacione cada afirmación económica con su teorema Lean.
+- Notas transparentes sobre las simplificaciones adoptadas.
+- Registro de qué resultados quedaron totalmente formalizados, parcialmente formalizados o únicamente documentados.
+
+Evita duplicar teoría disponible en Mathlib o EconCSLib cuando pueda reutilizarse limpiamente. Si EconCSLib no aporta componentes relevantes, no fuerces una dependencia artificial.
+
+Integridad de las pruebas
+
+No se permite dejar:
+
+- `sorry`
+- `admit`
+- `by_contra` incompleto
+- placeholders
+- axiomas personalizados introducidos para obtener las conclusiones
+- teoremas declarados como hipótesis con el mismo contenido que se pretende probar
+- definiciones modificadas artificialmente solo para facilitar la prueba
+- mensajes que oculten errores de compilación
+
+Los supuestos económicos o analíticos legítimos deben aparecer como hipótesis explícitas, con explicación de su significado. No presentes como formalización completa un resultado que solo se haya codificado bajo una hipótesis equivalente a la conclusión.
+
+Frontera y derivadas
+
+Presta especial atención a la frontera `X = 0`. La derivada marginal asociada a la función de probabilidad no es finita allí. No debes declarar una derivada clásica global si Lean solo permite demostrarla en el interior.
+
+Separa formalmente, cuando corresponda:
+
+- resultados para argumentos estrictamente positivos;
+- resultados de nivel en cero;
+- resultados por límite;
+- afirmaciones globales de monotonía o diferencias débiles.
+
+La formalización debe reflejar la calificación matemática identificada en el proyecto, no eliminarla mediante una definición conveniente.
+
+Documentación del repositorio
+
+Una vez terminada la formalización:
+
+1. Actualiza el README principal para incluir Lean, su alcance y el comando de reproducción.
+2. Añade un mapa conciso desde la derivación manuscrita hacia los archivos y teoremas Lean.
+3. Actualiza la parte correspondiente de la presentación y las notas orales para indicar que ahora existe una verificación Lean.
+4. Mantén exactamente cinco frames en la presentación.
+5. No reduzcas la explicación intuitiva del paper ni sustituyas la derivación manuscrita por código.
+6. Si mencionas que un resultado está “formalmente verificado”, comprueba que el teorema correspondiente realmente compila.
+7. Registra este prompt real en `prompts.md` según el formato existente. No reconstruyas mensajes anteriores que no estén disponibles.
+
+Verificaciones obligatorias
+
+Ejecuta y reporta:
+
+- Build limpio del proyecto Lean.
+- Segundo build desde estado limpio o equivalente reproducible.
+- Búsqueda recursiva de `sorry`, `admit`, placeholders y axiomas personalizados.
+- `#print axioms` para los teoremas principales, o una auditoría equivalente.
+- Verificación de que las dependencias declaradas son reproducibles.
+- Compilación de `presentation.tex`.
+- Confirmación de que el PDF sigue teniendo exactamente cinco páginas.
+- Revisión visual de las cinco páginas.
+- `git diff --check`.
+- Búsqueda de credenciales, tokens, caches y archivos generados que no deban publicarse.
+- Confirmación de que el PDF fuente del paper continúa ignorado.
+- Confirmación de que no se modificaron EconCSLib ni otros repositorios.
+- Working tree limpio después del commit y del merge.
+- Correspondencia entre `HEAD`, `origin/main` y GitHub después del merge.
+
+Puntos de detención
+
+Detente antes de crear archivos si:
+
+- el repositorio o la rama base no coinciden con lo esperado;
+- existen cambios locales que no pertenecen a esta fase;
+- la formalización exigiría modificar EconCSLib;
+- se requieren credenciales, autenticación web o permisos elevados;
+- la petición del profesor resulta incompatible con una instrucción oficial del issue.
+
+Durante la formalización, no te detengas por dificultades matemáticas ordinarias. Investiga Mathlib, EconCSLib y las definiciones existentes, simplifica la arquitectura cuando sea legítimo y continúa. Detente únicamente si un resultado central resulta falso, si solo puede probarse circularmente o si no puede formalizarse honestamente dentro del modelo adoptado. En ese caso, no lo ocultes: reporta el contraejemplo o la limitación exacta.
+
+Criterio para publicar
+
+Puedes hacer commit, push, abrir el nuevo PR y fusionarlo en esta misma fase únicamente si:
+
+- el build Lean es limpio y reproducible;
+- no quedan huecos de prueba;
+- la documentación describe honestamente el alcance;
+- la presentación compila y conserva cinco páginas;
+- no hay credenciales ni archivos privados;
+- el diff contiene solo cambios pertinentes.
+
+Si alguna de estas condiciones falla, deja la rama sin fusionar y reporta exactamente qué falta.
+
+Formato del reporte final
+
+Entrega:
+
+1. Estado: `COMPLETED`, `PARTIALLY COMPLETED` o `BLOCKED`.
+2. Estado inicial verificado del repositorio.
+3. Arquitectura Lean creada.
+4. Tabla de resultados con:
+   - afirmación económica;
+   - archivo y teorema Lean;
+   - hipótesis;
+   - estado: total, parcial o no formalizado.
+5. Explicación de las decisiones de modelado.
+6. Tratamiento formal de la frontera `X = 0`.
+7. Resultado de la extensión.
+8. Comandos de compilación y resultados.
+9. Auditoría de axiomas y huecos de prueba.
+10. Archivos creados o modificados.
+11. Resultado de LaTeX y revisión visual.
+12. Commit, rama, URL del PR y merge commit, si se fusionó.
+13. Confirmación de que el historial original y el comentario de entrega permanecen intactos.
+14. Limitaciones pendientes.
+15. Siguiente acción recomendada, sin ejecutarla si no estaba autorizada.
+
+La siguiente acción recomendada debería ser únicamente una revisión humana final del repositorio y preparación para la defensa oral, salvo que encuentres un problema material que requiera otra fase.
