@@ -1,20 +1,19 @@
 # Handwritten verification
 
-## Selected check
+## Completed check
 
-The future photograph will verify **Observation 1, its two cross-partials, and
-the boundary \(X=0\)**. This remains the selected check after independent
-review because it is central to the assigned static problem, is mathematically
-substantive, and documents the precise point at which a domain qualification
-is needed. It should show the derivatives of \(G\), \(g\), the marginal
-utility of effort, the interior signs, and the separate boundary evaluation.
+The two-page handwritten derivation verifies **Observation 1, its two
+cross-partials, and the boundary \(X=0\)**. It records the derivatives of
+\(G\) and \(g\), the marginal utility of effort, the strict interior signs,
+and the separate boundary evaluation.
 
-Follow **hand/DERIVATION_GUIDE.md** and keep the derivation to a suggested
-maximum of two handwritten pages.
+- `hand/observation1-boundary-page-1.jpg` develops the interior result.
+- `hand/observation1-boundary-page-2.jpg` checks the boundary \(X=0\), the
+  constrained optimum, and the final domain qualification.
+- `hand/observation1-boundary.jpg` is the ordered vertical composite, with
+  page 1 above page 2.
 
-## Expected file
+The photographs follow `hand/DERIVATION_GUIDE.md` and preserve the original
+handwriting and corrections.
 
-- Name: **hand/observation1-boundary.jpg**
-- Status: **PENDING STUDENT PHOTO**
-
-No photograph has been created or represented as completed.
+**Status: COMPLETED**

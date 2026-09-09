@@ -218,8 +218,9 @@ being strictly negative. Direct optimization is still well defined and gives
 zero effort in the baseline.
 
 My verdict is limited: Observation 1 is economically correct, but the strict
-cross-partial formulation needs an interior-domain qualification. The photo
-will document this calculation, not claim a major error in the paper.
+cross-partial formulation needs an interior-domain qualification. The
+two-page handwritten check documents this calculation; it does not claim a
+major error in the paper.
 
 ### Meaning of the displayed expressions
 

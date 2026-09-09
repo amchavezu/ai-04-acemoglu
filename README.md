@@ -141,8 +141,8 @@ low-knowledge steady states disappear.
 
 ## Hand verification
 
-`hand/observation1-boundary.jpg` - **pending student photograph** of the
-cross-partials and the \(X=0\) boundary check.
+`hand/observation1-boundary.jpg` - two-page handwritten verification of
+Observation 1, including the interior cross-partials and the boundary \(X=0\).
 
 ## Repository map
 
@@ -151,7 +151,7 @@ cross-partials and the \(X=0\) boundary check.
 | `analysis/paper_map.md` | Model, notation, and dynamic context |
 | `analysis/static_audit.md` | Independent audit of Observation 1 |
 | `extensions.md` | Focused \(\Delta_I>0\) extension |
-| `hand/` | Derivation guide and pending photograph |
+| `hand/` | Derivation guide, two source pages, and ordered composite |
 | `presentation.tex` / `presentation.pdf` | Five-minute Beamer presentation |
 | `speaker_notes.md` | Five-minute script and technical backup |
 | `oral_defense.md` | Thirty oral-defense questions with concise answers |

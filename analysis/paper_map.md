@@ -699,6 +699,6 @@ The selected check is **Observation 1, cross-partials and the boundary
 \(X=0\)**. It has precedence because the assignment prioritizes the static
 problem and Observation 1, while the dynamic proofs are read-only.
 
-The exact two-page sequence is in `hand/DERIVATION_GUIDE.md`. The future
-photograph must be named `hand/observation1-boundary.jpg`; its status is
-`PENDING STUDENT PHOTO`. No physical derivation or photograph exists yet.
+The exact two-page sequence is in `hand/DERIVATION_GUIDE.md`. The completed
+handwritten verification is stored as `hand/observation1-boundary.jpg`, with
+the two ordered source pages retained alongside it.

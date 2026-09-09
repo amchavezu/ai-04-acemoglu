@@ -2257,3 +2257,868 @@ Responde en español con:
 12. Siguiente acción
 
 La siguiente acción debe ser exclusivamente que yo realice la derivación manuscrita y guarde la fotografía. No publiques todavía el repositorio.
+
+
+## Assistant - Phase 4 response - verbatim
+
+## 1. Estado
+
+`COMPLETED`
+
+La Fase 4 quedó cerrada en `analysis`. No se abrió PR, no se hizo merge, no se modificó `main` y no se comentó el issue.
+
+## 2. Verificaciones o correcciones matemáticas
+
+Se corrigió una atribución en [analysis/static_audit.md](C:/Users/marce/Documents/GitHub/ai-04-acemoglu/analysis/static_audit.md) y [extensions.md](C:/Users/marce/Documents/GitHub/ai-04-acemoglu/extensions.md):
+
+- Assumption 1 impone \(\Delta_I=0\) y \(\Delta_X>0\).
+- No impone \(\Delta_G>0\).
+- La monotonía débil solo garantiza \(\Delta_G\geq0\); el paper permite, pero no exige, \(\Delta_G>0\).
+
+Las derivaciones de Observation 1 y de la extensión permanecen correctas:
+
+\[
+U_{eX}=\lambda_I\Delta_Xg(X)g(Y)>0,
+\]
+
+\[
+U_{e\tau_A}=\lambda_I\Delta_XG(X)g'(Y)<0
+\]
+
+en el interior. En \(X=0\), \(U_{e\tau_A}=0\) y \(U_{eX}\) no es una derivada clásica finita.
+
+## 3. Nueva narrativa de la presentación
+
+La secuencia ahora es:
+
+1. Una decisión necesita dos predicciones: estado común y caso particular.
+2. Se explica primero knowledge collapse y la externalidad.
+3. Después aparecen utilidad, FOC y cross-partials.
+4. La extensión se motiva mediante situaciones donde el conocimiento particular conserva valor autónomo.
+5. La revisión manuscrita presenta la calificación de frontera sin convertirla en el mensaje principal.
+
+Se mantienen exactamente cinco frames y aproximadamente cinco minutos.
+
+## 4. Cómo se explica cada ecuación central
+
+- \(Y=\sigma^{-2}+\lambda_Ie+\tau_A\): las precisiones se suman porque corresponden a un prior y señales normales independientes sobre el mismo estado.
+- \(G(X)\Delta_G\): probabilidad de acertar el estado común multiplicada por el payoff autónomo de ese acierto.
+- \(G(X)G(Y)\Delta_X\): producto de probabilidades independientes de acierto, multiplicado por el payoff complementario.
+- La FOC multiplica:
+  - productividad informativa del esfuerzo \(\lambda_I\);
+  - ganancia complementaria \(\Delta_X\);
+  - probabilidad de que el conocimiento general sea correcto \(G(X)\);
+  - aumento marginal de la probabilidad particular \(g(Y)\).
+- \(\lambda_G\) no aparece en la FOC privada porque gobierna la externalidad pública que el agente atomístico no internaliza; reaparece en la dinámica.
+- En la extensión, \([\Delta_I+G(X)\Delta_X]\) separa el retorno autónomo y el retorno complementario ponderado.
+
+## 5. Motivación y resultado de la extensión
+
+El benchmark \(\Delta_I=0\) representa complementariedad fuerte: entender el caso particular no genera producción si falla el conocimiento general. Es útil, pero excluye triage médico, rechazo de inversiones claramente malas y otras decisiones donde la información particular todavía ayuda.
+
+Con \(\Delta_I>0\):
+
+\[
+U_e=\lambda_Ig(Y)[\Delta_I+G(X)\Delta_X]-e^{1/\varepsilon}.
+\]
+
+Cuando \(X=0\), desaparece el componente \(G(X)\Delta_X\), pero sobrevive \(\Delta_I\). Esto produce un esfuerzo óptimo único y positivo:
+
+\[
+e_\Delta(0,\tau_A)>0,
+\]
+
+y por tanto:
+
+\[
+F_\Delta(0)>0.
+\]
+
+Resultado demostrado: cero deja de ser steady state. No está demostrado que desaparezcan estados positivos de bajo conocimiento ni se derivó bienestar para la extensión.
+
+## 6. Preparación oral
+
+Se creó [oral_defense.md](C:/Users/marce/Documents/GitHub/ai-04-acemoglu/oral_defense.md).
+
+Contiene 30 preguntas —básicas, intermedias y difíciles— distribuidas en diez categorías:
+
+- economic motivation
+- information and precision
+- agent’s problem
+- first-order condition
+- complements and substitutes
+- boundary behavior
+- dynamic feedback
+- extension
+- limitations
+- paper version and scope
+
+Cada pregunta incluye short answer, technical backup y common mistake to avoid.
+
+## 7. Derivación manuscrita
+
+Se confirmó que “Observation 1: cross-partials and the boundary \(X=0\)” es la mejor opción: pertenece al bloque prioritario del encargo, es matemáticamente sustantiva, permite verificación independiente y evita reproducir las pruebas dinámicas read-only.
+
+La guía completa de [hand/DERIVATION_GUIDE.md](C:/Users/marce/Documents/GitHub/ai-04-acemoglu/hand/DERIVATION_GUIDE.md) es:
+
+### Suggested title
+
+**Observation 1: cross-partials and the boundary \(X=0\)**
+
+Use the baseline model with \(\Delta_I=0\). Write the quoted labels as short margin notes.
+
+### Page 1 — probability technology and interior derivatives
+
+#### 1. Define prediction success
+
+\[
+G(\tau)=2\Phi(\sqrt{\tau})-1,
+\qquad \tau\geq0.
+\]
+
+Margin note: “precision \(\to\) probability of a correct prediction.”
+
+#### 2. Derive \(g=G'\)
+
+For \(\tau>0\), apply the chain rule:
+
+\[
+\begin{aligned}
+g(\tau)=G'(\tau)
+&=2\Phi'(\sqrt\tau)\frac{d\sqrt\tau}{d\tau}\\
+&=2\phi(\sqrt\tau)\frac{1}{2\sqrt\tau}\\
+&=\frac{\phi(\sqrt\tau)}{\sqrt\tau}>0.
+\end{aligned}
+\]
+
+Margin note: “more precision raises success.”
+
+#### 3. Derive \(g'\)
+
+First rewrite the density:
+
+\[
+g(\tau)=(2\pi)^{-1/2}e^{-\tau/2}\tau^{-1/2}.
+\]
+
+Apply the product rule:
+
+\[
+\begin{aligned}
+g'(\tau)
+&=(2\pi)^{-1/2}
+\left[
+-\frac12e^{-\tau/2}\tau^{-1/2}
+-\frac12e^{-\tau/2}\tau^{-3/2}
+\right]\\
+&=-\frac12\left(1+\frac1\tau\right)g(\tau)<0,
+\qquad \tau>0.
+\end{aligned}
+\]
+
+Margin note: “diminishing returns to precision.”
+
+#### 4. Define private posterior precision
+
+\[
+Y=\sigma^{-2}+\lambda_Ie+\tau_A,
+\qquad
+Y_e=\lambda_I,\quad Y_X=0,\quad Y_{\tau_A}=1.
+\]
+
+Margin note: “independent prior, human, and AI precisions add.”
+
+#### 5. Write baseline utility and identify the choice
+
+\[
+U(e;X,\tau_A)
+=f(0,0)+G(X)\Delta_G+G(X)G(Y)\Delta_X
+-\frac{\varepsilon}{\varepsilon+1}
+e^{(\varepsilon+1)/\varepsilon},
+\qquad e\geq0.
+\]
+
+Write underneath:
+
+\[
+\text{choice: }e;
+\qquad
+\text{taken as given: }X,\tau_A.
+\]
+
+Margin note: “probability \(\times\) payoff, minus effort cost.”
+
+#### 6. Differentiate with respect to effort
+
+Show both chain-rule and cost steps:
+
+\[
+\begin{aligned}
+U_e
+&=G(X)\Delta_X\,g(Y)Y_e
+-\frac{\varepsilon}{\varepsilon+1}
+\frac{\varepsilon+1}{\varepsilon}e^{1/\varepsilon}\\
+&=\lambda_I\Delta_XG(X)g(Y)-e^{1/\varepsilon}.
+\end{aligned}
+\]
+
+Margin note: “marginal expected payoff minus marginal cost.”
+
+#### 7. Derive both cross-partials
+
+Holding \(e\) and \(\tau_A\) fixed, use \(Y_X=0\):
+
+\[
+\begin{aligned}
+U_{eX}
+&=\lambda_I\Delta_XG'(X)g(Y)\\
+&=\lambda_I\Delta_Xg(X)g(Y).
+\end{aligned}
+\]
+
+Holding \(e\) and \(X\) fixed, use \(Y_{\tau_A}=1\):
+
+\[
+\begin{aligned}
+U_{e\tau_A}
+&=\lambda_I\Delta_XG(X)g'(Y)Y_{\tau_A}\\
+&=\lambda_I\Delta_XG(X)g'(Y).
+\end{aligned}
+\]
+
+Margin notes: “\(X\) raises the value of effort” and “AI lowers it through diminishing returns in \(Y\).”
+
+### Page 2 — signs, boundary, and verdict
+
+#### 8. Sign the interior result
+
+Write the conditions first:
+
+\[
+X>0,\quad Y>0,\quad
+\Delta_X>0,\quad\lambda_I>0,\quad\varepsilon>0.
+\]
+
+Then:
+
+\[
+g(X)>0,\quad g(Y)>0,\quad G(X)>0,\quad g'(Y)<0,
+\]
+
+so:
+
+\[
+\boxed{U_{eX}>0}
+\qquad\text{and}\qquad
+\boxed{U_{e\tau_A}<0}.
+\]
+
+Margin note: “general knowledge complements effort; agentic AI substitutes for effort.”
+
+#### 9. Evaluate \(X=0\) separately
+
+First compute the level:
+
+\[
+G(0)=2\Phi(0)-1=0.
+\]
+
+Then compute the limiting slope:
+
+\[
+g(X)=\frac{\phi(\sqrt X)}{\sqrt X}
+\sim\frac{\phi(0)}{\sqrt X}
+\longrightarrow+\infty
+\quad\text{as }X\downarrow0.
+\]
+
+Therefore \(g(0)\) is not finite, and \(U_{eX}\) is not a finite classical cross-partial at the boundary. But:
+
+\[
+U_{e\tau_A}(e;0,\tau_A)
+=\lambda_I\Delta_XG(0)g'(Y)=0.
+\]
+
+Margin note: “weak substitution, not a strict negative derivative.”
+
+#### 10. Show that the optimization problem remains well defined
+
+Substitute \(G(0)=0\):
+
+\[
+U(e;0,\tau_A)
+=f(0,0)
+-\frac{\varepsilon}{\varepsilon+1}
+e^{(\varepsilon+1)/\varepsilon}.
+\]
+
+Since cost is zero at \(e=0\) and strictly increasing for \(e>0\):
+
+\[
+\boxed{e^*(0,\tau_A)=0}.
+\]
+
+Margin note: “the derivative issue does not make the choice problem undefined.”
+
+#### 11. Add one line on global weak differences
+
+Write:
+
+\[
+U_e(e;X,\tau_A)
+=\lambda_I\Delta_XG(X)g(Y)-e^{1/\varepsilon}.
+\]
+
+Because \(G(X)\) is nondecreasing on \(X\geq0\), marginal effort value is nondecreasing in \(X\). Because \(g(Y)\) decreases with \(\tau_A\), marginal effort value is nonincreasing in \(\tau_A\); at \(X=0\), it is constant in \(\tau_A\).
+
+This is the discrete increasing/decreasing-differences interpretation.
+
+#### 12. Final verdict
+
+> **Observation 1 is economically correct. Its strict cross-partial signs hold on the interior \(X>0\). At \(X=0\), \(U_{e\tau_A}=0\) and \(U_{eX}\) is not finite, so the global statement is valid only in the weak increasing/decreasing-differences sense.**
+
+### Conditions not to omit
+
+- \(X>0\) for a finite and strictly positive \(U_{eX}\).
+- \(Y>0\), guaranteed by a proper finite-variance prior.
+- \(\Delta_X>0\), \(\lambda_I>0\), and \(\varepsilon>0\).
+- \(e\geq0\), so the baseline solution at \(X=0\) is a corner.
+- This calculation uses \(\Delta_I=0\), not the extension.
+
+### Two-page layout
+
+- Page 1: steps 1–7; place short economic notes in the right margin and box both cross-partials.
+- Page 2: steps 8–12; draw a horizontal line before the boundary check, box \(e^*(0,\tau_A)=0\), and finish with the verdict in a separate box.
+- Use dark ink, keep the paper flat and leave margins suitable for a rectangular crop.
+
+Final filename:
+
+`hand/observation1-boundary.jpg`
+
+## 8. Compilación y revisión visual
+
+- Beamer 16:9.
+- Exactamente cinco frames y cinco páginas.
+- Sin overfull/underfull boxes materiales.
+- Sin referencias pendientes.
+- Ecuaciones y textos completos y legibles.
+- Nombre y URL correctos.
+- Las cinco páginas fueron renderizadas e inspeccionadas individualmente.
+- El placeholder `PENDING STUDENT PHOTO` continúa visible.
+- Renders y auxiliares temporales eliminados.
+
+PDF compilado: :codex-file-citation{path="C:/Users/marce/Documents/GitHub/ai-04-acemoglu/presentation.pdf" purpose="output"}
+
+## 9. Transcript
+
+- Respuesta exacta de la Fase 3: incorporada literalmente.
+- Prompt de la Fase 4: incorporado literalmente.
+- Ambos textos fueron comparados contra el historial y coinciden exactamente.
+- La respuesta de la Fase 1 continúa pendiente; no fue reconstruida.
+- La futura respuesta de esta fase no se anticipó en `prompts.md`.
+
+## 10. Git
+
+- Commit: `f6b0c6799d0afbc8f560e788ee700bd3b8cee832`
+- Mensaje: `Strengthen pedagogical narrative and oral defense`
+- Push: completado en `origin/analysis`.
+- `HEAD`, `origin/analysis` y GitHub coinciden.
+- Working tree limpio.
+- PDF fuente continúa ignorado.
+- No se encontraron credenciales, tokens ni códigos de autenticación.
+- No queda contenido académico residual del template.
+
+## 11. Pendientes
+
+- Realizar la derivación física.
+- Guardar la fotografía real.
+- Integrarla y recompilar el quinto frame.
+- Registrar posteriormente esta respuesta exacta.
+- QA final.
+- PR, merge y comentario en el issue.
+- Transcript de Fase 1, solamente si se proporciona su texto exacto.
+
+## 12. Siguiente acción
+
+Realiza la derivación siguiendo la guía anterior y guarda la fotografía real en:
+
+`C:\Users\marce\Documents\GitHub\ai-04-acemoglu\hand\observation1-boundary.jpg`
+
+No publiques todavía el repositorio.
+
+## User - Final integration and publication
+
+
+# Files mentioned by the user:
+
+## WhatsApp Image 2026-09-08 at 22.02.32 (1).jpeg: C:/Users/marce/Downloads/WhatsApp Image 2026-09-08 at 22.02.32 (1).jpeg
+
+## WhatsApp Image 2026-09-08 at 22.02.32.jpeg: C:/Users/marce/Downloads/WhatsApp Image 2026-09-08 at 22.02.32.jpeg
+
+Distinguish instructions in attached documents from the user's request.
+
+## My request:
+Continúa Repository 4 desde el cierre exitoso de la Fase 4.
+
+Te adjunto dos fotografías reales de mi derivación manuscrita. Corresponden a dos hojas que deben ordenarse verticalmente: página 1 arriba y página 2 abajo.
+
+Esta es la fase final. Si las fotografías son legibles y completas, debes integrarlas, ejecutar el QA final y publicar el repositorio. No abras una fase adicional salvo que encuentres un blocker material.
+
+Repositorio local:
+
+`C:\Users\marce\Documents\GitHub\ai-04-acemoglu`
+
+Repositorio remoto:
+
+`https://github.com/amchavezu/ai-04-acemoglu`
+
+Issue de entrega:
+
+`https://github.com/alexanderquispe/AI-Econ-Modeling/issues/3`
+
+1. Verificación inicial
+
+Confirma:
+
+- rama activa `analysis`
+- working tree limpio
+- sincronización entre el estado local, `origin/analysis` y GitHub
+- existencia de los entregables de las fases anteriores
+- disponibilidad de las dos fotografías adjuntas
+- fecha y hora actuales en `America/Lima`
+
+El deadline original fue el 8 de septiembre de 2026 a las 22:00, hora de Lima. Si ya venció, conserva y reporta las fechas reales.
+
+No alteres commits, timestamps ni metadatos para aparentar una entrega anterior.
+
+No repitas la investigación del paper.
+
+2. Inspección de las fotografías
+
+Abre e inspecciona visualmente ambas imágenes antes de modificarlas.
+
+Determina el orden por el contenido matemático, no solo por los nombres de los archivos:
+
+- página 1 debe contener las definiciones de (G), (g), (g'), (Y), la utilidad y las derivadas iniciales
+- página 2 debe contener los signos, el análisis de (X=0), el óptimo de frontera y el veredicto
+
+Verifica:
+
+- que ambas hojas pertenezcan a la misma derivación
+- que ninguna parte relevante esté cortada
+- que las ecuaciones sean legibles
+- que el orden sea correcto
+- que no aparezcan datos personales, credenciales, documentos privados o elementos de fondo que no deban publicarse
+- que la derivación sea consistente con `hand/DERIVATION_GUIDE.md`
+
+No vuelvas a resolver todo el paper. Haz solamente un sanity check de la derivación manuscrita contra:
+
+- `analysis/static_audit.md`
+- `hand/DERIVATION_GUIDE.md`
+- el PDF primario, únicamente si surge una duda concreta
+
+Si detectas un error matemático material en las hojas, una página faltante o texto ilegible, detente y explica exactamente qué debo corregir. No publiques una derivación incorrecta.
+
+Errores menores de caligrafía o presentación no son blockers si el argumento se entiende.
+
+3. Procesamiento de las imágenes
+
+Conserva una copia individual y ordenada de cada hoja:
+
+- `hand/observation1-boundary-page-1.jpg`
+- `hand/observation1-boundary-page-2.jpg`
+
+Crea además:
+
+- `hand/observation1-boundary.jpg`
+
+Esta última debe ser una composición vertical:
+
+- página 1 arriba
+- página 2 abajo
+- ambas con el mismo ancho
+- orientación vertical correcta
+- separación blanca discreta entre las páginas
+- márgenes recortados solo cuando no contengan escritura
+- fondo y contraste suficientemente claros
+- resolución suficiente para ampliar la imagen
+- sin deformar las proporciones
+- sin eliminar tachaduras, anotaciones o evidencia de trabajo manual
+
+No uses generación de imágenes.
+
+No reconstruyas ni reescribas la caligrafía.
+
+No agregues ecuaciones digitales dentro de la fotografía.
+
+Puedes:
+
+- corregir orientación
+- aplicar el EXIF correcto
+- recortar fondo innecesario
+- ajustar moderadamente brillo y contraste
+- convertir formatos
+- igualar el ancho de ambas páginas
+
+No apliques filtros que hagan que la imagen parezca digital o artificial.
+
+Elimina de los archivos finales:
+
+- geolocalización
+- modelo del teléfono
+- rutas locales
+- miniaturas EXIF
+- cualquier metadata personal innecesaria
+
+No reduzcas la resolución hasta volver ilegible el contenido. Prioriza legibilidad sobre tamaño de archivo.
+
+4. Integración documental
+
+Actualiza:
+
+- `hand/README.md`
+- `README.md`
+- `presentation.tex`
+- `presentation.pdf`
+- `speaker_notes.md`, solo si todavía menciona un placeholder o una fotografía pendiente
+- `prompts.md`
+
+En `hand/README.md` registra:
+
+- los dos archivos individuales
+- el composite vertical
+- qué demuestra la derivación
+- que la página 1 desarrolla el resultado interior
+- que la página 2 revisa la frontera (X=0)
+- estado `COMPLETED`
+
+En `README.md` reemplaza cualquier estado pendiente por una referencia factual y breve:
+
+`hand/observation1-boundary.jpg` - two-page handwritten verification of Observation 1, including the interior cross-partials and the boundary (X=0).
+
+No alargues materialmente el README.
+
+Busca y elimina afirmaciones como:
+
+- `PENDING STUDENT PHOTO`
+- `pending photograph`
+- `photo not yet added`
+- cualquier equivalente que ya no sea cierto
+
+5. Integración en el Beamer
+
+Sustituye el placeholder del quinto frame por la composición vertical real:
+
+`hand/observation1-boundary.jpg`
+
+La composición completa de dos páginas debe aparecer en el frame.
+
+Como el composite será alto y angosto, decide mediante inspección visual la mejor distribución. Prioriza:
+
+- fotografía visible
+- veredicto legible
+- ausencia de texto innecesario
+- continuidad con los cuatro frames anteriores
+
+Puedes mostrar en el mismo frame:
+
+- el composite vertical completo
+- un recorte ampliado del propio composite que destaque el cálculo decisivo de (X=0)
+
+Si usas un recorte ampliado, debe provenir de la misma fotografía mediante opciones de `\includegraphics`, no de una imagen reconstruida.
+
+No agregues un sexto frame.
+
+No reduzcas el texto o la fotografía hasta volverlos ilegibles.
+
+El frame debe comunicar:
+
+- qué afirmación se revisó
+- qué mostró la derivación
+- veredicto: correcto en el interior, con una calificación de dominio en la frontera
+
+La fotografía debe ser el elemento visual dominante.
+
+6. Compilación y QA visual
+
+Compila `presentation.tex` con `latexmk` usando el entorno que ya funciona.
+
+Genera `presentation.pdf` en la raíz.
+
+Verifica técnicamente:
+
+- exactamente cinco frames
+- exactamente cinco páginas
+- cero errores de compilación
+- cero referencias sin resolver
+- ausencia de overfull boxes materiales
+- ausencia de archivos o imágenes faltantes
+- nombre correcto del estudiante
+- URL correcta del repositorio
+- ausencia de contenido heredado del template
+- ausencia de placeholders
+- ausencia de afirmaciones de que la foto sigue pendiente
+
+Renderiza las cinco páginas.
+
+Revisa visualmente cada página.
+
+Revisa el quinto frame también a resolución completa. Confirma:
+
+- orientación correcta
+- página 1 arriba y página 2 abajo
+- ambas hojas completas
+- fotografía razonablemente legible
+- veredicto visible
+- ningún recorte de escritura
+- ningún solapamiento
+- ninguna deformación
+- consistencia de colores y espaciado
+
+Si el quinto frame no funciona visualmente, corrígelo antes de continuar.
+
+Elimina renders y auxiliares temporales después del QA.
+
+7. Auditoría final del repositorio
+
+Comprueba que existan y sean finales:
+
+- `README.md`
+- `prompts.md`
+- `hand/observation1-boundary.jpg`
+- `hand/observation1-boundary-page-1.jpg`
+- `hand/observation1-boundary-page-2.jpg`
+- `presentation.tex`
+- `presentation.pdf`
+- `extensions.md`
+- `speaker_notes.md`
+- `oral_defense.md`
+- `analysis/paper_map.md`
+- `analysis/static_audit.md`
+
+Verifica:
+
+- README aproximadamente de una página
+- paper, problema del agente y resultado con condiciones
+- prompts y respuestas relevantes en bruto
+- fotografía manuscrita real
+- Beamer de cinco páginas
+- extensión claramente identificada como propia
+- limitaciones explícitas
+- versión del paper correctamente identificada
+- ninguna credencial o código de autenticación
+- PDF fuente ignorado
+- caches y auxiliares ignorados
+- ningún archivo privado
+- ninguna ruta local innecesaria fuera del transcript raw
+- ningún resultado dinámico o de bienestar atribuido a nuestra extensión sin demostración
+
+Ejecuta:
+
+- `git status`
+- `git diff --check`
+- revisión del diff completo
+- búsqueda de `TODO`
+- búsqueda de `PENDING`
+- búsqueda de referencias a Aouad, Lykouris o Zhong
+- búsqueda de credenciales y secretos
+- comprobación de archivos rastreados e ignorados
+
+La respuesta pendiente de la Fase 1 no es un blocker para publicar. No la reconstruyas.
+
+8. Transcript
+
+Si la respuesta exacta de la Fase 4 está disponible en el historial de la sesión, agrégala literalmente a `prompts.md`.
+
+Registra este prompt literalmente como:
+
+`User - Final integration and publication`
+
+No inventes ni resumas respuestas no recuperables.
+
+No registres anticipadamente tu futura respuesta.
+
+El transcript incompleto de Fase 1 debe permanecer declarado con honestidad si corresponde, pero no debe bloquear la entrega.
+
+9. Commit final en analysis
+
+Incorpora:
+
+- fotografías individuales
+- composite vertical
+- documentación actualizada
+- Beamer recompilado
+- transcript disponible
+
+Antes del commit, revisa el staging completo.
+
+Crea un commit descriptivo, por ejemplo:
+
+`Integrate handwritten verification and finalize submission`
+
+Haz push a `origin/analysis`.
+
+Si el helper HTTPS falla, usa el mismo método seguro mediante GitHub API que funcionó anteriormente. No muestres ni almacenes tokens.
+
+Confirma que:
+
+- working tree está limpio
+- `HEAD` coincide con el estado remoto de `analysis`
+- todos los archivos finales aparecen en GitHub
+- `presentation.pdf` y las fotografías pueden abrirse desde GitHub
+
+10. Pull request
+
+Después del push, abre un PR desde `analysis` hacia `main`.
+
+Título sugerido:
+
+`Complete Repository 4: Acemoglu, Kong and Ozdaglar`
+
+El cuerpo debe ser breve y factual. Incluye tres puntos:
+
+- reconstructs the static human-effort problem and Observation 1
+- documents the interior-domain qualification through a handwritten check
+- develops the (\Delta\_I>0) production-side extension and compiles the five-minute deck
+
+No afirmes que entregamos antes del deadline.
+
+Verifica antes del merge:
+
+- base `main`
+- head `analysis`
+- PR no draft
+- todos los commits esperados
+- diff sin archivos privados
+- checks disponibles en estado aceptable
+
+11. Merge
+
+Si el PR está correcto, fusiónalo mediante merge commit.
+
+No uses squash si eso elimina la secuencia real de commits.
+
+No reescribas historia.
+
+No alteres fechas.
+
+No elimines la rama `analysis`, salvo que GitHub lo haga automáticamente y no sea necesario recuperarla.
+
+Después del merge:
+
+- verifica que el PR tenga estado `MERGED`
+- registra URL y hora real del merge
+- confirma que `main` contiene todos los entregables
+- confirma que `presentation.pdf` y la fotografía existen en `main`
+- sincroniza la copia local de manera segura
+- deja el working tree limpio
+
+12. Comentario de entrega
+
+Comprueba primero si `amchavezu` ya comentó en el issue 3.
+
+Si no existe un comentario previo, publica exactamente:
+
+`https://github.com/amchavezu/ai-04-acemoglu`
+
+No agregues explicación, disculpa, PR, fecha ni texto adicional.
+
+Si ya existe el mismo comentario, no publiques un duplicado.
+
+Después verifica:
+
+- URL del comentario
+- autor `amchavezu`
+- contenido exacto
+- timestamp real
+- accesibilidad pública del repositorio
+
+El comentario solo debe publicarse después de confirmar el merge.
+
+13. Stop conditions
+
+Detente antes de publicar si:
+
+- falta una de las fotografías
+- no puedes determinar el orden de las páginas
+- la derivación contiene un error material
+- la escritura relevante es ilegible
+- el composite corta contenido
+- la presentación no tiene exactamente cinco páginas
+- el quinto frame no permite identificar la evidencia manuscrita
+- aparecen credenciales o archivos privados
+- el PR apunta a la rama incorrecta
+- el merge requiere una decisión humana no autorizada
+- GitHub vuelve a exigir autenticación manual
+
+Si GitHub exige confirmación en navegador, inicia tú el flujo seguro y solicita únicamente esa intervención.
+
+14. Reporte final
+
+Responde en español y de forma ejecutiva:
+
+1. Estado
+
+   - `SUBMITTED` o `BLOCKED`
+
+2. Fotografías
+
+   - archivos originales normalizados
+   - composite
+   - orden
+   - dimensiones
+   - metadata eliminada
+   - resultado de legibilidad
+
+3. Beamer
+
+   - cinco frames
+   - cinco páginas
+   - integración de la fotografía
+   - compilación
+   - revisión visual
+
+4. Auditoría final
+
+   - entregables
+   - privacidad
+   - placeholders
+   - TODOs
+   - resultado matemático
+
+5. Transcript
+
+   - respuestas incorporadas
+   - omisión de Fase 1 declarada sin reconstrucción
+
+6. Git
+
+   - commit final
+   - push
+   - working tree
+
+7. Pull request
+
+   - URL
+   - estado
+   - hora real de merge
+
+8. Entrega
+
+   - URL del comentario
+   - contenido
+   - timestamp
+   - accesibilidad pública
+
+9. Fechas
+
+   - deadline original
+   - fecha y hora reales de publicación
+   - confirmación de que no se alteraron timestamps
+
+10. Veredicto final
+
+    - confirma si el repositorio cumple todos los requisitos del issue
+
+Si el estado es `SUBMITTED`, no recomiendes otra fase. Solo enumera cualquier mejora opcional que no afecte la validez de la entrega.
+<image name=[Image #1] path="C:\Users\marce\Downloads\WhatsApp Image 2026-09-08 at 22.02.32 (1).jpeg"></image><image name=[Image #2] path="C:\Users\marce\Downloads\WhatsApp Image 2026-09-08 at 22.02.32.jpeg"></image>
